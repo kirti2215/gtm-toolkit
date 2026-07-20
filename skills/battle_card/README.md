@@ -1,29 +1,56 @@
 #Details about generating battle cards
-**Competitive Battle Card Skill**
+# Competitive Battle Card Skill
 
 A structured AI workflow for diagnosing competitive situations and generating deal-specific battle cards.
 
-This is not a feature comparison generator. Before producing any content, the Skill identifies the type of competitive motion — developer preference, procurement leverage, or incumbent displacement — and adapts the strategy, objection handling, and recommended next action accordingly.
+Unlike a traditional battle card generator, this Skill does **not** start with a feature comparison. It first diagnoses the competitive motion—developer preference, procurement leverage, or incumbent displacement—and then adapts the strategy, objection handling, and recommended next actions accordingly.
 
-**What's in this folder**
+## Contents
 
-SKILL.md — the core skill: workflow, decision logic, output structure, and guardrails
-input-template.md — structured input form to fill out before running the skill
-example-input.md — fictionalized enterprise scenario (payments database evaluation)
-example-output.md — battle card the skill produced for the example scenario
+* **SKILL.md** — Core workflow, decision logic, output structure, and guardrails
+* **input-template.md** — Structured template for capturing deal context
+* **example-input.md** — Fictional enterprise payments database evaluation
+* **example-output.md** — Battle card generated from the example scenario
 
-**How to use**
+## How to Use
 
-1. Copy SKILL.md into a Claude conversation or load it as an Agent Skill
-2. Fill out input-template.md with your deal context
-3. Paste the completed input and run
+1. Load **SKILL.md** into Claude as an Agent Skill (or paste it into a conversation).
+2. Complete **input-template.md** with your deal context.
+3. Run the Skill using the completed input.
+4. The Skill diagnoses the competitive motion before generating any recommendations. If critical information is missing, it flags the gap instead of inventing an answer.
 
-The skill will diagnose the competitive motion before generating any content. If critical context is missing, it will flag the gap rather than invent an answer.
+## What the Skill Produces
 
-**What the output includes**
+* Competitive motion diagnosis
+* Deal strategy and winnability assessment
+* Buyer and stakeholder map
+* Honest competitive positioning, including where the competitor genuinely wins
+* Buyer-specific objection handling
+* Landmine discovery questions
+* "Do Not Say This" guidance
+* Stage-specific next actions
+* Evidence labels for every claim
 
-Competitive motion diagnosis, deal strategy and winnability assessment, buyer and stakeholder map, honest competitive positioning (including where the competitor genuinely wins), objection handling tailored to the deal context, landmine discovery questions, a Do Not Say This section, a stage-specific next action, and evidence labels on every claim.
+## Design Principles
 
-**Read more**
+The workflow is built around four principles:
 
-Full writeup on how this was built and what changed during testing: [Beyond Prompting: How I Turned GTM Judgment Into a Reusable Claude Agent Skill] — link to be added on publication.
+* Diagnose the situation before generating content.
+* Adapt recommendations to the buyer, deal stage, and competitive motion.
+* Distinguish verified evidence from assumptions.
+* Make the reasoning transparent and inspectable.
+
+## Repository
+
+This repository also includes companion Skills for:
+
+* Product Launch Planning
+* Sales Enablement Briefs
+
+All three follow the same design philosophy: package reusable GTM judgment into structured AI workflows rather than standalone prompts.
+
+## Read More
+
+**Beyond Prompting: How I Turned GTM Judgment Into a Reusable Claude Agent Skill**
+
+*Link will be added once the article is published.*
