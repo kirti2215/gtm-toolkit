@@ -1,0 +1,117 @@
+# Privileged Action Policy — Veltara Financial Group
+# Machine-readable by the policy engine.
+# Defines actions and role names that always require human approval,
+# and conditions that trigger automatic agent suspension.
+
+version: "1.1"
+effective_date: "2026-08-01"
+owner: chief-information-security-officer
+
+# ── Privileged role names ─────────────────────────────────────────────────────
+# Any provisioning action involving one of these role names is escalated to
+# APPROVAL_REQUIRED regardless of the agent's autonomy tier or the action label.
+# A standard provisioning action for "GlobalAdmin" is still privileged.
+
+privileged_role_names:
+  - GlobalAdmin
+  - IdentityAdmin
+  - Administrator
+  - DomainAdmin
+  - SecurityAdmin
+  - AuditAdmin
+  - EmergencyAccess
+  - BreakGlass
+  - SuperUser
+  - RootAccess
+  - ComplianceAdmin
+  - LegalHoldAdmin
+
+# ── Actions that always require a named human approver ────────────────────────
+# No agent at any autonomy tier may execute these autonomously.
+
+always_approval_required:
+
+  - action: grant_privileged_role
+    approver_role: identity-governance-lead
+    reason: "Privileged roles expand the blast radius of a compromise."
+
+  - action: provision_privileged_role
+    approver_role: identity-governance-lead
+    reason: "Privileged role provisioning always requires a named human approver."
+
+  - action: grant_emergency_access
+    approver_role: ciso-or-delegate
+    reason: "Emergency access bypasses normal approval chains."
+
+  - action: disable_account
+    approver_role: identity-operations-lead
+    reason: "Account disablement can be irreversible without careful review."
+
+  - action: bulk_export_identity_data
+    approver_role: data-governance-lead
+    reason: "Bulk identity export is a primary data-exfiltration vector."
+
+  - action: modify_own_permissions
+    approver_role: ciso
+    reason: "An agent modifying its own permissions is a critical control failure indicator."
+
+  - action: create_new_agent_identity
+    approver_role: ai-platform-lead
+    reason: "New agent identities expand the non-human identity surface permanently."
+
+  - action: restore_suspended_agent
+    approver_role: ai-platform-lead
+    reason: "A suspended agent was suspended for a reason. Restoration requires explicit review."
+
+  - action: increase_agent_autonomy_tier
+    approver_role: ciso
+    reason: "Autonomy tier increases expand what the agent can do without human approval."
+
+  - action: revoke_credentials
+    approver_role: identity-operations-lead
+    reason: "Credential revocation affects active sessions and must be human-approved."
+
+  - action: issue_emergency_credential
+    approver_role: ciso-or-delegate
+    reason: "Emergency credentials bypass standard issuance controls."
+
+# ── Sensitive actions ─────────────────────────────────────────────────────────
+# Actions classified as sensitive for injection-signal escalation.
+# If a prompt injection signal is detected AND the proposed action is sensitive,
+# the decision escalates to DENY rather than APPROVAL_REQUIRED.
+
+sensitive_actions:
+  - bulk_export_identity_data
+  - read_full_identity_record
+  - grant_privileged_role
+  - provision_privileged_role
+  - grant_emergency_access
+  - issue_emergency_credential
+  - revoke_credentials
+  - modify_own_permissions
+  - disable_account
+
+# ── Auto-suspend conditions ───────────────────────────────────────────────────
+# Conditions under which the engine writes a suspension entry to runtime state.
+# Mutable suspension state is stored in runtime/agent-state.json, not in the registry.
+
+auto_suspend_conditions:
+
+  - condition: repeated_denied_actions
+    threshold: 10
+    window_minutes: 15
+    action: write_suspension_to_runtime_state
+    reason: "Denial threshold exceeded. Possible manipulation or misconfiguration."
+    notify: security-operations-on-call
+
+  - condition: self_modification_attempt
+    threshold: 1
+    action: write_suspension_to_runtime_state
+    reason: "Agent attempted to modify its own permissions. Critical control failure indicator."
+    notify: ciso-and-security-operations
+
+  - condition: injection_on_sensitive_action
+    threshold: 1
+    action: write_suspension_to_runtime_state
+    reason: "Prompt injection detected on a sensitive action. Agent suspended pending review."
+    notify: security-operations

@@ -1,0 +1,118 @@
+# Delegated Authority Model — Veltara Financial Group
+# Machine-readable by the policy engine.
+# Defines valid delegation modes, required fields, constraints, and prohibited patterns.
+
+version: "1.1"
+effective_date: "2026-08-01"
+owner: identity-governance
+
+# ── Delegation modes ──────────────────────────────────────────────────────────
+
+modes:
+
+  service_identity:
+    description: >
+      Agent acts as itself using its own registered service credential.
+      No user is being represented. Permissions are defined entirely by
+      the agent's own policy.
+    audit_label: "AGENT_SELF"
+    requires_delegating_user: false
+    requires_scope: false
+    requires_expiry: false
+
+  delegated:
+    description: >
+      A named user explicitly authorizes the agent to act on their behalf
+      for a specific task and time window. The agent's effective permissions
+      are the intersection of its own policy and the delegating user's entitlements.
+    audit_label: "DELEGATED"
+    requires_delegating_user: true
+    requires_scope: true
+    requires_expiry: true
+    max_ttl_minutes: 480
+    validation_rules:
+      - delegating_user must be a non-empty string matching format user@domain
+      - delegation_scope must reference at least one approved action for this agent
+      - delegation_expires_at must be a future ISO-8601 timestamp
+      - agent permissions are capped at delegating user entitlements
+      - delegation cannot be re-delegated to another agent
+
+  impersonation:
+    description: >
+      Agent presents as if it were the user for system interactions that
+      require a named human identity. High-risk. Requires additional approval.
+    audit_label: "IMPERSONATING"
+    requires_delegating_user: true
+    requires_scope: true
+    requires_expiry: true
+    max_ttl_minutes: 240
+    requires_additional_approval: true
+    approver_role: ciso-or-delegate
+    validation_rules:
+      - requires explicit approval record in approved_delegations list
+      - max TTL 4 hours; no renewal without new approval
+      - generates mandatory security review ticket
+      - all actions logged with IMPERSONATING label
+
+# ── Prohibited delegation patterns ───────────────────────────────────────────
+# The policy engine checks the proposed delegation against this list.
+# Any match contributes a DENY to the violation list.
+
+prohibited_patterns:
+
+  - id: no_agent_to_agent_delegation
+    description: "Agent delegates authority to another agent without human approval"
+    detection: delegating_user matches a registered agent_id
+
+  - id: no_self_elevation
+    description: "Agent grants itself temporary elevated permissions"
+    detection: agent_id matches delegating_user
+
+  - id: no_self_credential_renewal
+    description: "Agent extends its own credential TTL"
+    detection: action is extend_credential and agent_id matches credential_owner
+
+  - id: no_shared_credentials
+    description: "Agent uses a pooled or shared credential"
+    detection: credential_type is shared or credential_owner has multiple active agents
+
+  - id: no_delegation_from_inactive_identity
+    description: "Agent acts on behalf of a suspended or terminated user"
+    detection: delegating_user account status is inactive or suspended
+
+  - id: no_scope_expansion
+    description: "Agent requests actions outside the declared delegation scope"
+    detection: requested action not in delegation_scope list
+
+# ── Impersonation prohibited actions ─────────────────────────────────────────
+# Even under an approved impersonation delegation, these actions are prohibited.
+
+impersonation_prohibited_actions:
+  - provision_privileged_role
+  - grant_privileged_role
+  - modify_own_permissions
+  - issue_emergency_credential
+  - modify_legal_hold
+  - bulk_export_identity_data
+
+# ── Credential lifecycle rules ────────────────────────────────────────────────
+
+credential_lifecycle:
+  issuance:
+    - Credentials issued by the Agent Identity Service only
+    - Short-lived tokens; no long-lived secrets in agent memory
+    - Credential scoped to current task and resource set
+
+  rotation:
+    - Credentials expire at registered TTL
+    - No silent renewal; agent must request new credential per task session
+    - All rotation events logged
+
+  revocation:
+    triggers:
+      - business_owner_request
+      - security_team_detection
+      - agent_suspension
+      - user_revocation_of_delegation
+      - policy_engine_denial_threshold_exceeded
+    propagation_sla_seconds: 60

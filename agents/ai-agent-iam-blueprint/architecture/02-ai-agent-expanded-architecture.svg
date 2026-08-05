@@ -1,0 +1,148 @@
+<svg viewBox="0 0 960 700" xmlns="http://www.w3.org/2000/svg" font-family="'Segoe UI', Arial, sans-serif">
+
+  <!-- Background -->
+  <rect width="960" height="700" fill="#f8f9fa"/>
+
+  <!-- Title -->
+  <text x="480" y="34" text-anchor="middle" font-size="17" font-weight="700" fill="#1a1a2e">AI-Expanded IAM Architecture — Broken Assumptions</text>
+  <text x="480" y="54" text-anchor="middle" font-size="11" fill="#c62828">AI agents enter as non-human identities that can reason, retrieve context, and invoke enterprise systems</text>
+
+  <!-- ── Existing IAM (condensed, faded) ── -->
+  <!-- IdP box -->
+  <rect x="300" y="75" width="220" height="44" rx="7" fill="#c5cae9" stroke="#7986cb" stroke-width="1.5"/>
+  <text x="410" y="94" text-anchor="middle" font-size="11" font-weight="600" fill="#3949ab">Identity Provider / SSO</text>
+  <text x="410" y="108" text-anchor="middle" font-size="10" fill="#5c6bc0">Human Identities · Service Accounts</text>
+
+  <!-- IAM Platform -->
+  <rect x="300" y="140" width="220" height="44" rx="7" fill="#9fa8da" stroke="#5c6bc0" stroke-width="1.5"/>
+  <text x="410" y="159" text-anchor="middle" font-size="11" font-weight="600" fill="#1a237e">IAM / Provisioning Platform</text>
+  <text x="410" y="173" text-anchor="middle" font-size="10" fill="#283593">Lifecycle · Reconciliation · Policy</text>
+
+  <line x1="410" y1="119" x2="410" y2="140" stroke="#7986cb" stroke-width="1.5" marker-end="url(#a1)"/>
+  <line x1="410" y1="184" x2="410" y2="212" stroke="#7986cb" stroke-width="1.5" marker-end="url(#a1)"/>
+
+  <!-- Application Connectors -->
+  <rect x="300" y="212" width="220" height="40" rx="6" fill="#c5cae9" stroke="#7986cb" stroke-width="1.2"/>
+  <text x="410" y="229" text-anchor="middle" font-size="10" font-weight="600" fill="#3949ab">Application Connectors</text>
+  <text x="410" y="243" text-anchor="middle" font-size="9" fill="#5c6bc0">Target Systems · Cloud · Databases</text>
+
+  <!-- SIEM -->
+  <rect x="550" y="140" width="110" height="112" rx="7" fill="#e0f2f1" stroke="#00897b" stroke-width="1.2"/>
+  <text x="605" y="162" text-anchor="middle" font-size="10" font-weight="700" fill="#004d40">SIEM /</text>
+  <text x="605" y="175" text-anchor="middle" font-size="10" font-weight="700" fill="#004d40">Monitoring</text>
+  <text x="605" y="192" text-anchor="middle" font-size="9" fill="#00695c">Human identity</text>
+  <text x="605" y="204" text-anchor="middle" font-size="9" fill="#00695c">events only</text>
+  <text x="605" y="222" text-anchor="middle" font-size="9" fill="#c62828">⚠ No agent</text>
+  <text x="605" y="235" text-anchor="middle" font-size="9" fill="#c62828">visibility</text>
+
+  <!-- ── AI AGENTS — new entrants ── -->
+  <!-- AI Agent box (the new problem) -->
+  <rect x="20" y="90" width="240" height="180" rx="10" fill="#fff3e0" stroke="#e65100" stroke-width="2.5"/>
+  <text x="140" y="114" text-anchor="middle" font-size="13" font-weight="700" fill="#bf360c">AI Agents</text>
+  <text x="140" y="130" text-anchor="middle" font-size="9" fill="#e65100">Non-human identities entering the system</text>
+
+  <!-- Agent types -->
+  <rect x="36" y="140" width="196" height="34" rx="5" fill="#ffccbc" stroke="#ff5722" stroke-width="1"/>
+  <text x="134" y="154" text-anchor="middle" font-size="10" font-weight="600" fill="#bf360c">Access Review Agent</text>
+  <text x="134" y="167" text-anchor="middle" font-size="9" fill="#e64a19">Tier 2 · Reads entitlements · Creates tickets</text>
+
+  <rect x="36" y="182" width="196" height="34" rx="5" fill="#ffccbc" stroke="#ff5722" stroke-width="1"/>
+  <text x="134" y="196" text-anchor="middle" font-size="10" font-weight="600" fill="#bf360c">Provisioning Agent</text>
+  <text x="134" y="209" text-anchor="middle" font-size="9" fill="#e64a19">Tier 2 · Standard roles · API calls</text>
+
+  <rect x="36" y="224" width="196" height="34" rx="5" fill="#ffccbc" stroke="#ff5722" stroke-width="1"/>
+  <text x="134" y="238" text-anchor="middle" font-size="10" font-weight="600" fill="#bf360c">Investigation Agent</text>
+  <text x="134" y="251" text-anchor="middle" font-size="9" fill="#e64a19">Tier 1 · Auth logs · Correlates events</text>
+
+  <!-- Arrow from agents into IAM -->
+  <line x1="260" y1="180" x2="300" y2="180" stroke="#e65100" stroke-width="2" stroke-dasharray="6,3" marker-end="url(#a-orange)"/>
+
+  <!-- ── External Sources agents retrieve from ── -->
+  <rect x="20" y="310" width="240" height="160" rx="10" fill="#fce4ec" stroke="#c2185b" stroke-width="2"/>
+  <text x="140" y="333" text-anchor="middle" font-size="12" font-weight="700" fill="#880e4f">Retrieval Sources</text>
+  <text x="140" y="348" text-anchor="middle" font-size="9" fill="#c2185b">Content agents fetch to inform their reasoning</text>
+
+  <rect x="36" y="358" width="196" height="26" rx="4" fill="#f8bbd9" stroke="#ad1457" stroke-width="1"/>
+  <text x="134" y="375" text-anchor="middle" font-size="9" fill="#880e4f">Support tickets · Access requests · Emails</text>
+
+  <rect x="36" y="392" width="196" height="26" rx="4" fill="#f8bbd9" stroke="#ad1457" stroke-width="1"/>
+  <text x="134" y="409" text-anchor="middle" font-size="9" fill="#880e4f">Knowledge base · Internal documents</text>
+
+  <rect x="36" y="426" width="196" height="26" rx="4" fill="#f8bbd9" stroke="#ad1457" stroke-width="1"/>
+  <text x="134" y="443" text-anchor="middle" font-size="9" fill="#880e4f">External APIs · Model providers · Plugins</text>
+
+  <!-- Arrow from retrieval to agents -->
+  <line x1="140" y1="310" x2="140" y2="270" stroke="#c2185b" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#a-red)"/>
+
+  <!-- ── Broken Assumptions ── -->
+  <rect x="295" y="290" width="390" height="330" rx="10" fill="#fff8f8" stroke="#c62828" stroke-width="2"/>
+  <text x="490" y="315" text-anchor="middle" font-size="13" font-weight="700" fill="#c62828">⚠  Assumptions That Break</text>
+
+  <!-- Assumption 1 -->
+  <rect x="313" y="328" width="354" height="52" rx="5" fill="#ffebee" stroke="#ef9a9a" stroke-width="1.2"/>
+  <text x="490" y="344" text-anchor="middle" font-size="10" font-weight="700" fill="#b71c1c">IDENTITY</text>
+  <text x="490" y="358" text-anchor="middle" font-size="9" fill="#c62828">Was: Every actor is human, service account, or deterministic app</text>
+  <text x="490" y="370" text-anchor="middle" font-size="9" fill="#c62828">Now: Agent may act independently, on behalf of a user, or under delegation</text>
+
+  <!-- Assumption 2 -->
+  <rect x="313" y="390" width="354" height="52" rx="5" fill="#ffebee" stroke="#ef9a9a" stroke-width="1.2"/>
+  <text x="490" y="406" text-anchor="middle" font-size="10" font-weight="700" fill="#b71c1c">AUTHORIZATION</text>
+  <text x="490" y="420" text-anchor="middle" font-size="9" fill="#c62828">Was: Permission to call an API describes what the app does</text>
+  <text x="490" y="432" text-anchor="middle" font-size="9" fill="#c62828">Now: Agent dynamically decides when, why, how often to call it</text>
+
+  <!-- Assumption 3 -->
+  <rect x="313" y="452" width="354" height="52" rx="5" fill="#ffebee" stroke="#ef9a9a" stroke-width="1.2"/>
+  <text x="490" y="468" text-anchor="middle" font-size="10" font-weight="700" fill="#b71c1c">INPUT</text>
+  <text x="490" y="482" text-anchor="middle" font-size="9" fill="#c62828">Was: Data entering a workflow is always data</text>
+  <text x="490" y="494" text-anchor="middle" font-size="9" fill="#c62828">Now: Retrieved content can contain instructions that change behavior</text>
+
+  <!-- Assumption 4 -->
+  <rect x="313" y="514" width="354" height="52" rx="5" fill="#ffebee" stroke="#ef9a9a" stroke-width="1.2"/>
+  <text x="490" y="530" text-anchor="middle" font-size="10" font-weight="700" fill="#b71c1c">AUDIT / DETECTION</text>
+  <text x="490" y="544" text-anchor="middle" font-size="9" fill="#c62828">Was: Logs show which identity invoked which action</text>
+  <text x="490" y="556" text-anchor="middle" font-size="9" fill="#c62828">Now: Logs must also show what agent retrieved, concluded, and used as authority</text>
+
+  <!-- ── New attack paths ── -->
+  <rect x="700" y="310" width="240" height="310" rx="10" fill="#fbe9e7" stroke="#bf360c" stroke-width="2"/>
+  <text x="820" y="335" text-anchor="middle" font-size="12" font-weight="700" fill="#bf360c">New Attack Paths</text>
+
+  <rect x="714" y="350" width="212" height="44" rx="5" fill="#ffccbc" stroke="#e64a19" stroke-width="1.2"/>
+  <text x="820" y="367" text-anchor="middle" font-size="10" font-weight="600" fill="#bf360c">Prompt Injection</text>
+  <text x="820" y="381" text-anchor="middle" font-size="9" fill="#e64a19">Instructions embedded in retrieved content</text>
+
+  <rect x="714" y="404" width="212" height="44" rx="5" fill="#ffccbc" stroke="#e64a19" stroke-width="1.2"/>
+  <text x="820" y="421" text-anchor="middle" font-size="10" font-weight="600" fill="#bf360c">Excessive Agency</text>
+  <text x="820" y="435" text-anchor="middle" font-size="9" fill="#e64a19">Agent scope-creep beyond assigned task</text>
+
+  <rect x="714" y="458" width="212" height="44" rx="5" fill="#ffccbc" stroke="#e64a19" stroke-width="1.2"/>
+  <text x="820" y="475" text-anchor="middle" font-size="10" font-weight="600" fill="#bf360c">Privilege Abuse</text>
+  <text x="820" y="489" text-anchor="middle" font-size="9" fill="#e64a19">Broad credential enables unintended access</text>
+
+  <rect x="714" y="512" width="212" height="44" rx="5" fill="#ffccbc" stroke="#e64a19" stroke-width="1.2"/>
+  <text x="820" y="529" text-anchor="middle" font-size="10" font-weight="600" fill="#bf360c">Data Overreach</text>
+  <text x="820" y="543" text-anchor="middle" font-size="9" fill="#e64a19">Agent retrieves more data than task requires</text>
+
+  <rect x="714" y="566" width="212" height="44" rx="5" fill="#ffccbc" stroke="#e64a19" stroke-width="1.2"/>
+  <text x="820" y="583" text-anchor="middle" font-size="10" font-weight="600" fill="#bf360c">Shadow Agents</text>
+  <text x="820" y="597" text-anchor="middle" font-size="9" fill="#e64a19">Unregistered agents operating undetected</text>
+
+  <!-- Arrows from attack paths to broken assumption box -->
+  <line x1="700" y1="450" x2="685" y2="450" stroke="#e64a19" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#a-orange)"/>
+
+  <!-- Bottom note -->
+  <rect x="20" y="650" width="920" height="36" rx="5" fill="#fff3e0" stroke="#e65100" stroke-width="1"/>
+  <text x="480" y="664" text-anchor="middle" font-size="10" font-weight="700" fill="#bf360c">The control model that worked for human identities and deterministic apps does not extend to agents that reason, retrieve, and act probabilistically.</text>
+  <text x="480" y="678" text-anchor="middle" font-size="10" fill="#e65100">The next diagram shows the redesigned architecture.</text>
+
+  <defs>
+    <marker id="a1" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#7986cb"/>
+    </marker>
+    <marker id="a-orange" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#e65100"/>
+    </marker>
+    <marker id="a-red" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#c2185b"/>
+    </marker>
+  </defs>
+</svg>

@@ -1,0 +1,240 @@
+<svg viewBox="0 0 960 720" xmlns="http://www.w3.org/2000/svg" font-family="'Segoe UI', Arial, sans-serif">
+
+  <!-- Background -->
+  <rect width="960" height="720" fill="#f1f8f1"/>
+
+  <!-- Title -->
+  <text x="480" y="34" text-anchor="middle" font-size="17" font-weight="700" fill="#1a1a2e">Secured AI Agent Architecture</text>
+  <text x="480" y="54" text-anchor="middle" font-size="11" fill="#2e7d32">The model proposes. The policy layer authorizes. Every decision is logged.</text>
+
+  <!-- ── LAYER 1: Agent and User Input ── -->
+  <text x="30" y="90" font-size="10" font-weight="700" fill="#1b5e20" letter-spacing="1">LAYER 1 — AGENT &amp; USER</text>
+
+  <!-- User -->
+  <rect x="30" y="100" width="120" height="52" rx="7" fill="#e8f5e9" stroke="#388e3c" stroke-width="1.5"/>
+  <text x="90" y="122" text-anchor="middle" font-size="11" font-weight="600" fill="#1b5e20">User</text>
+  <text x="90" y="138" text-anchor="middle" font-size="9" fill="#2e7d32">Delegates authority</text>
+
+  <!-- AI Agent -->
+  <rect x="176" y="100" width="160" height="52" rx="7" fill="#fff3e0" stroke="#e65100" stroke-width="2"/>
+  <text x="256" y="119" text-anchor="middle" font-size="11" font-weight="700" fill="#bf360c">AI Agent</text>
+  <text x="256" y="133" text-anchor="middle" font-size="9" fill="#e64a19">Registered identity · Owns a credential</text>
+  <text x="256" y="146" text-anchor="middle" font-size="9" fill="#e64a19">Proposes actions — does not authorize them</text>
+
+  <!-- Agent registry lookup -->
+  <rect x="362" y="100" width="160" height="52" rx="7" fill="#e8f5e9" stroke="#43a047" stroke-width="1.5"/>
+  <text x="442" y="119" text-anchor="middle" font-size="10" font-weight="700" fill="#1b5e20">Agent Registry</text>
+  <text x="442" y="133" text-anchor="middle" font-size="9" fill="#2e7d32">id · owner · tier · tools</text>
+  <text x="442" y="146" text-anchor="middle" font-size="9" fill="#2e7d32">approved data · TTL</text>
+
+  <!-- Delegation model -->
+  <rect x="548" y="100" width="160" height="52" rx="7" fill="#e8f5e9" stroke="#43a047" stroke-width="1.5"/>
+  <text x="628" y="119" text-anchor="middle" font-size="10" font-weight="700" fill="#1b5e20">Delegation Model</text>
+  <text x="628" y="133" text-anchor="middle" font-size="9" fill="#2e7d32">Acting as self / delegated / impersonating?</text>
+  <text x="628" y="146" text-anchor="middle" font-size="9" fill="#2e7d32">Delegation scope · Expiry · Owner</text>
+
+  <!-- Short-lived credential -->
+  <rect x="734" y="100" width="196" height="52" rx="7" fill="#e3f2fd" stroke="#1565c0" stroke-width="1.5"/>
+  <text x="832" y="119" text-anchor="middle" font-size="10" font-weight="700" fill="#0d47a1">Short-Lived Credential</text>
+  <text x="832" y="133" text-anchor="middle" font-size="9" fill="#1565c0">Task-scoped · Auto-expires</text>
+  <text x="832" y="146" text-anchor="middle" font-size="9" fill="#1565c0">Revocable in &lt; 60 seconds</text>
+
+  <!-- Arrows Layer 1 -->
+  <line x1="150" y1="126" x2="176" y2="126" stroke="#388e3c" stroke-width="1.5" marker-end="url(#ga)"/>
+  <line x1="336" y1="126" x2="362" y2="126" stroke="#e65100" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#oa)"/>
+  <line x1="522" y1="126" x2="548" y2="126" stroke="#43a047" stroke-width="1.5" marker-end="url(#ga)"/>
+  <line x1="708" y1="126" x2="734" y2="126" stroke="#1565c0" stroke-width="1.5" marker-end="url(#ba)"/>
+
+  <!-- ── LAYER 2: Retrieval (tagged untrusted) ── -->
+  <text x="30" y="182" font-size="10" font-weight="700" fill="#1b5e20" letter-spacing="1">LAYER 2 — RETRIEVAL (UNTRUSTED_DATA)</text>
+
+  <rect x="176" y="192" width="280" height="52" rx="7" fill="#fce4ec" stroke="#c2185b" stroke-width="1.5"/>
+  <text x="316" y="212" text-anchor="middle" font-size="11" font-weight="600" fill="#880e4f">Retrieved External Context</text>
+  <text x="316" y="227" text-anchor="middle" font-size="9" fill="#c2185b">Tickets · Documents · Emails · APIs · Knowledge Base</text>
+  <text x="316" y="240" text-anchor="middle" font-size="9" font-weight="700" fill="#c62828">Tagged UNTRUSTED_DATA — cannot authorize tool calls</text>
+
+  <!-- Injection scanner -->
+  <rect x="490" y="192" width="196" height="52" rx="7" fill="#fff8e1" stroke="#f9a825" stroke-width="1.5"/>
+  <text x="588" y="212" text-anchor="middle" font-size="10" font-weight="700" fill="#f57f17">Injection Scanner</text>
+  <text x="588" y="226" text-anchor="middle" font-size="9" fill="#f57f17">Detects instruction patterns in retrieved content</text>
+  <text x="588" y="240" text-anchor="middle" font-size="9" fill="#f57f17">Flags → policy engine → security event</text>
+
+  <line x1="256" y1="152" x2="256" y2="192" stroke="#e65100" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#oa)"/>
+  <line x1="456" y1="218" x2="490" y2="218" stroke="#c2185b" stroke-width="1.5" marker-end="url(#ra)"/>
+
+  <!-- ── LAYER 3: Policy Enforcement ── -->
+  <text x="30" y="278" font-size="10" font-weight="700" fill="#1b5e20" letter-spacing="1">LAYER 3 — POLICY ENFORCEMENT (EXTERNAL TO THE MODEL)</text>
+
+  <!-- Tool Gateway -->
+  <rect x="96" y="288" width="156" height="64" rx="7" fill="#e8f5e9" stroke="#2e7d32" stroke-width="2"/>
+  <text x="174" y="308" text-anchor="middle" font-size="11" font-weight="700" fill="#1b5e20">Tool Gateway</text>
+  <text x="174" y="322" text-anchor="middle" font-size="9" fill="#2e7d32">All tool invocations route</text>
+  <text x="174" y="334" text-anchor="middle" font-size="9" fill="#2e7d32">through one controlled interface</text>
+  <text x="174" y="346" text-anchor="middle" font-size="9" fill="#2e7d32">No direct system calls from model</text>
+
+  <!-- Policy Engine (central, prominent) -->
+  <rect x="280" y="280" width="240" height="80" rx="10" fill="#1b5e20" stroke="#033504" stroke-width="2.5"/>
+  <text x="400" y="304" text-anchor="middle" font-size="13" font-weight="700" fill="white">Policy Engine</text>
+  <text x="400" y="320" text-anchor="middle" font-size="9" fill="#c8e6c9">Agent identity → delegated authority → resource sensitivity</text>
+  <text x="400" y="333" text-anchor="middle" font-size="9" fill="#c8e6c9">→ action threshold → autonomy tier</text>
+  <text x="400" y="348" text-anchor="middle" font-size="9" font-weight="700" fill="#a5d6a7">ALLOW  /  DENY  /  APPROVAL REQUIRED</text>
+
+  <!-- Data Policy -->
+  <rect x="548" y="288" width="178" height="64" rx="7" fill="#e8f5e9" stroke="#2e7d32" stroke-width="1.5"/>
+  <text x="637" y="308" text-anchor="middle" font-size="10" font-weight="700" fill="#1b5e20">Data Policy</text>
+  <text x="637" y="322" text-anchor="middle" font-size="9" fill="#2e7d32">Classification ceiling · Minimization</text>
+  <text x="637" y="336" text-anchor="middle" font-size="9" fill="#2e7d32">Sensitive pattern scan · GDPR controls</text>
+  <text x="637" y="350" text-anchor="middle" font-size="9" fill="#2e7d32">Cross-border restrictions</text>
+
+  <!-- Privileged Action Policy -->
+  <rect x="750" y="288" width="186" height="64" rx="7" fill="#e8f5e9" stroke="#2e7d32" stroke-width="1.5"/>
+  <text x="843" y="308" text-anchor="middle" font-size="10" font-weight="700" fill="#1b5e20">Privileged Action Policy</text>
+  <text x="843" y="322" text-anchor="middle" font-size="9" fill="#2e7d32">High-impact actions → always require</text>
+  <text x="843" y="336" text-anchor="middle" font-size="9" fill="#2e7d32">named human approver</text>
+  <text x="843" y="350" text-anchor="middle" font-size="9" fill="#c62828">No agent bypasses this list</text>
+
+  <!-- Connecting arrows to policy engine -->
+  <line x1="256" y1="244" x2="320" y2="280" stroke="#e65100" stroke-width="2" marker-end="url(#ga)"/>
+  <line x1="252" y1="320" x2="280" y2="320" stroke="#2e7d32" stroke-width="1.5" marker-end="url(#ga)"/>
+  <line x1="520" y1="320" x2="548" y2="320" stroke="#2e7d32" stroke-width="1.5" marker-end="url(#ga)"/>
+  <line x1="726" y1="320" x2="750" y2="320" stroke="#2e7d32" stroke-width="1.5" marker-end="url(#ga)"/>
+
+  <!-- ── LAYER 4: Decision & Action ── -->
+  <text x="30" y="390" font-size="10" font-weight="700" fill="#1b5e20" letter-spacing="1">LAYER 4 — DECISION &amp; EXECUTION</text>
+
+  <!-- Three decision outcomes -->
+  <rect x="60" y="400" width="168" height="52" rx="7" fill="#e8f5e9" stroke="#43a047" stroke-width="1.5"/>
+  <text x="144" y="420" text-anchor="middle" font-size="12" font-weight="700" fill="#1b5e20">✓ ALLOW</text>
+  <text x="144" y="435" text-anchor="middle" font-size="9" fill="#2e7d32">Action proceeds · Event logged</text>
+  <text x="144" y="448" text-anchor="middle" font-size="9" fill="#2e7d32">Within policy and tier</text>
+
+  <rect x="252" y="400" width="168" height="52" rx="7" fill="#fff3e0" stroke="#f57c00" stroke-width="2"/>
+  <text x="336" y="420" text-anchor="middle" font-size="12" font-weight="700" fill="#e65100">⚠  APPROVAL REQUIRED</text>
+  <text x="336" y="435" text-anchor="middle" font-size="9" fill="#e65100">Routed to named approver</text>
+  <text x="336" y="448" text-anchor="middle" font-size="9" fill="#e65100">Agent waits · No action taken</text>
+
+  <rect x="444" y="400" width="168" height="52" rx="7" fill="#ffebee" stroke="#c62828" stroke-width="2"/>
+  <text x="528" y="420" text-anchor="middle" font-size="12" font-weight="700" fill="#b71c1c">✗  DENY</text>
+  <text x="528" y="435" text-anchor="middle" font-size="9" fill="#c62828">Action blocked · Security event</text>
+  <text x="528" y="448" text-anchor="middle" font-size="9" fill="#c62828">10+ denials → auto-suspend</text>
+
+  <!-- Kill Switch -->
+  <rect x="636" y="400" width="168" height="52" rx="7" fill="#b71c1c" stroke="#7f0000" stroke-width="2"/>
+  <text x="720" y="420" text-anchor="middle" font-size="11" font-weight="700" fill="white">KILL SWITCH</text>
+  <text x="720" y="435" text-anchor="middle" font-size="9" fill="#ffcdd2">Suspend agent instantly</text>
+  <text x="720" y="448" text-anchor="middle" font-size="9" fill="#ffcdd2">Revoke all credentials</text>
+
+  <!-- Human Approval Workflow -->
+  <rect x="816" y="400" width="124" height="52" rx="7" fill="#e3f2fd" stroke="#1565c0" stroke-width="1.5"/>
+  <text x="878" y="420" text-anchor="middle" font-size="10" font-weight="700" fill="#0d47a1">Human Approval</text>
+  <text x="878" y="435" text-anchor="middle" font-size="9" fill="#1565c0">Named approver</text>
+  <text x="878" y="448" text-anchor="middle" font-size="9" fill="#1565c0">Required before action</text>
+
+  <!-- Arrow from policy to decisions -->
+  <line x1="400" y1="360" x2="144" y2="400" stroke="#2e7d32" stroke-width="1.5" marker-end="url(#ga)"/>
+  <line x1="400" y1="360" x2="336" y2="400" stroke="#f57c00" stroke-width="1.5" marker-end="url(#ya)"/>
+  <line x1="400" y1="360" x2="528" y2="400" stroke="#c62828" stroke-width="1.5" marker-end="url(#ra)"/>
+  <line x1="528" y1="400" x2="720" y2="400" stroke="#c62828" stroke-width="1.2" stroke-dasharray="4,3"/>
+  <line x1="336" y1="400" x2="878" y2="400" stroke="#f57c00" stroke-width="1.2" stroke-dasharray="4,3"/>
+
+  <!-- ── LAYER 5: Audit & Monitoring ── -->
+  <text x="30" y="488" font-size="10" font-weight="700" fill="#1b5e20" letter-spacing="1">LAYER 5 — IMMUTABLE AUDIT &amp; RUNTIME MONITORING</text>
+
+  <!-- Audit log -->
+  <rect x="60" y="498" width="210" height="72" rx="7" fill="#e8eaf6" stroke="#5c6bc0" stroke-width="1.5"/>
+  <text x="165" y="518" text-anchor="middle" font-size="11" font-weight="700" fill="#1a237e">Immutable Audit Log</text>
+  <text x="165" y="532" text-anchor="middle" font-size="9" fill="#3949ab">Every decision: ALLOW · DENY · APPROVAL</text>
+  <text x="165" y="544" text-anchor="middle" font-size="9" fill="#3949ab">Agent ID · Action · Resource · Context</text>
+  <text x="165" y="556" text-anchor="middle" font-size="9" fill="#3949ab">Delegation · Risk signals · Matched rule</text>
+
+  <!-- Runtime monitoring -->
+  <rect x="290" y="498" width="210" height="72" rx="7" fill="#e8eaf6" stroke="#5c6bc0" stroke-width="1.5"/>
+  <text x="395" y="518" text-anchor="middle" font-size="11" font-weight="700" fill="#1a237e">Runtime Monitoring</text>
+  <text x="395" y="532" text-anchor="middle" font-size="9" fill="#3949ab">Anomalous volume · Unusual tool sequences</text>
+  <text x="395" y="544" text-anchor="middle" font-size="9" fill="#3949ab">Behavioral change after new retrieval</text>
+  <text x="395" y="556" text-anchor="middle" font-size="9" fill="#3949ab">Repeated denied actions → alert</text>
+
+  <!-- AI-assisted investigation -->
+  <rect x="520" y="498" width="210" height="72" rx="7" fill="#e8eaf6" stroke="#5c6bc0" stroke-width="1.5"/>
+  <text x="625" y="518" text-anchor="middle" font-size="11" font-weight="700" fill="#1a237e">AI-Assisted Investigation</text>
+  <text x="625" y="532" text-anchor="middle" font-size="9" fill="#3949ab">Correlates events · Summarizes timelines</text>
+  <text x="625" y="544" text-anchor="middle" font-size="9" fill="#3949ab">Identifies affected accounts</text>
+  <text x="625" y="556" text-anchor="middle" font-size="9" fill="#3949ab">Recommends containment — human approves</text>
+
+  <!-- Incident response -->
+  <rect x="750" y="498" width="190" height="72" rx="7" fill="#fce4ec" stroke="#c2185b" stroke-width="1.5"/>
+  <text x="845" y="518" text-anchor="middle" font-size="11" font-weight="700" fill="#880e4f">Incident Response</text>
+  <text x="845" y="532" text-anchor="middle" font-size="9" fill="#c2185b">Suspend · Revoke · Quarantine</text>
+  <text x="845" y="544" text-anchor="middle" font-size="9" fill="#c2185b">Reconstruct · Contain · Recover</text>
+  <text x="845" y="556" text-anchor="middle" font-size="9" fill="#c2185b">Update policy · Restore service</text>
+
+  <!-- Arrows from decision layer to audit -->
+  <line x1="144" y1="452" x2="165" y2="498" stroke="#43a047" stroke-width="1.2" stroke-dasharray="4,3" marker-end="url(#ga)"/>
+  <line x1="336" y1="452" x2="395" y2="498" stroke="#f57c00" stroke-width="1.2" stroke-dasharray="4,3" marker-end="url(#ya)"/>
+  <line x1="528" y1="452" x2="625" y2="498" stroke="#c62828" stroke-width="1.2" stroke-dasharray="4,3" marker-end="url(#ra)"/>
+  <line x1="720" y1="452" x2="845" y2="498" stroke="#b71c1c" stroke-width="1.2" stroke-dasharray="4,3" marker-end="url(#ra)"/>
+
+  <!-- ── Target Systems (bottom) ── -->
+  <text x="30" y="604" font-size="10" font-weight="700" fill="#1b5e20" letter-spacing="1">ENTERPRISE SYSTEMS (agents access only via Tool Gateway + Policy enforcement)</text>
+
+  <rect x="60" y="614" width="128" height="40" rx="5" fill="#e8f5e9" stroke="#66bb6a" stroke-width="1.2"/>
+  <text x="124" y="631" text-anchor="middle" font-size="9" font-weight="600" fill="#1b5e20">IAM / Identity DB</text>
+  <text x="124" y="645" text-anchor="middle" font-size="8" fill="#2e7d32">Entitlements · Accounts</text>
+
+  <rect x="206" y="614" width="128" height="40" rx="5" fill="#e8f5e9" stroke="#66bb6a" stroke-width="1.2"/>
+  <text x="270" y="631" text-anchor="middle" font-size="9" font-weight="600" fill="#1b5e20">Ticketing</text>
+  <text x="270" y="645" text-anchor="middle" font-size="8" fill="#2e7d32">Access Requests</text>
+
+  <rect x="352" y="614" width="128" height="40" rx="5" fill="#e8f5e9" stroke="#66bb6a" stroke-width="1.2"/>
+  <text x="416" y="631" text-anchor="middle" font-size="9" font-weight="600" fill="#1b5e20">Cloud Apps</text>
+  <text x="416" y="645" text-anchor="middle" font-size="8" fill="#2e7d32">M365 · Salesforce</text>
+
+  <rect x="498" y="614" width="128" height="40" rx="5" fill="#e8f5e9" stroke="#66bb6a" stroke-width="1.2"/>
+  <text x="562" y="631" text-anchor="middle" font-size="9" font-weight="600" fill="#1b5e20">Databases</text>
+  <text x="562" y="645" text-anchor="middle" font-size="8" fill="#2e7d32">Scoped read / write</text>
+
+  <rect x="644" y="614" width="128" height="40" rx="5" fill="#e8f5e9" stroke="#66bb6a" stroke-width="1.2"/>
+  <text x="708" y="631" text-anchor="middle" font-size="9" font-weight="600" fill="#1b5e20">Notification</text>
+  <text x="708" y="645" text-anchor="middle" font-size="8" fill="#2e7d32">Email · Alerts</text>
+
+  <rect x="790" y="614" width="130" height="40" rx="5" fill="#e8f5e9" stroke="#66bb6a" stroke-width="1.2"/>
+  <text x="855" y="631" text-anchor="middle" font-size="9" font-weight="600" fill="#1b5e20">Approval Workflow</text>
+  <text x="855" y="645" text-anchor="middle" font-size="8" fill="#2e7d32">Named humans only</text>
+
+  <!-- Lines from gateway to systems -->
+  <line x1="174" y1="352" x2="174" y2="400" stroke="#2e7d32" stroke-width="1.5" marker-end="url(#ga)"/>
+  <line x1="174" y1="614" x2="174" y2="570" stroke="#2e7d32" stroke-width="1.2"/>
+  <line x1="174" y1="570" x2="855" y2="570" stroke="#66bb6a" stroke-width="1.2"/>
+  <line x1="124" y1="570" x2="124" y2="614" stroke="#66bb6a" stroke-width="1" marker-end="url(#ga)"/>
+  <line x1="270" y1="570" x2="270" y2="614" stroke="#66bb6a" stroke-width="1" marker-end="url(#ga)"/>
+  <line x1="416" y1="570" x2="416" y2="614" stroke="#66bb6a" stroke-width="1" marker-end="url(#ga)"/>
+  <line x1="562" y1="570" x2="562" y2="614" stroke="#66bb6a" stroke-width="1" marker-end="url(#ga)"/>
+  <line x1="708" y1="570" x2="708" y2="614" stroke="#66bb6a" stroke-width="1" marker-end="url(#ga)"/>
+  <line x1="855" y1="570" x2="855" y2="614" stroke="#66bb6a" stroke-width="1" marker-end="url(#ga)"/>
+
+  <!-- Gateway to target systems bus -->
+  <line x1="174" y1="452" x2="174" y2="570" stroke="#2e7d32" stroke-width="1.5"/>
+
+  <!-- Bottom principle bar -->
+  <rect x="20" y="668" width="920" height="36" rx="5" fill="#e8f5e9" stroke="#2e7d32" stroke-width="1.2"/>
+  <text x="480" y="682" text-anchor="middle" font-size="10" font-weight="700" fill="#1b5e20">CORE PRINCIPLE: Every agent action flows through the policy engine before reaching any system.</text>
+  <text x="480" y="697" text-anchor="middle" font-size="10" fill="#2e7d32">The model proposes. The external policy layer authorizes. The audit log records. The human approves what exceeds autonomous authority.</text>
+
+  <defs>
+    <marker id="ga" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#2e7d32"/>
+    </marker>
+    <marker id="oa" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#e65100"/>
+    </marker>
+    <marker id="ba" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#1565c0"/>
+    </marker>
+    <marker id="ra" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#c62828"/>
+    </marker>
+    <marker id="ya" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#f57c00"/>
+    </marker>
+  </defs>
+</svg>

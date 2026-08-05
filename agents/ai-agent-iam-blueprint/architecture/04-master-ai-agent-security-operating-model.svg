@@ -1,0 +1,272 @@
+<svg viewBox="0 0 900 1670" xmlns="http://www.w3.org/2000/svg" font-family="'Segoe UI', system-ui, Arial, sans-serif">
+
+  <defs>
+    <marker id="arr" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#546E7A"/>
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="900" height="1670" fill="#0D1117"/>
+
+  <!-- TITLE -->
+  <text x="450" y="28" text-anchor="middle" font-size="14" font-weight="700" fill="#E8EAF6" letter-spacing="1.5">AI AGENT SECURITY OPERATING MODEL</text>
+  <text x="450" y="46" text-anchor="middle" font-size="9.5" fill="#7986CB">End-to-end architecture from governance through recovery  ·  ai-agent-iam-blueprint</text>
+  <line x1="30" y1="53" x2="870" y2="53" stroke="#283593" stroke-width="0.5"/>
+
+  <!-- ═══════════════════════════════════════════════════════
+       GOVERNANCE PLANE  y=58  h=152
+  ═══════════════════════════════════════════════════════ -->
+  <rect x="10" y="58" width="880" height="152" rx="5" fill="#111855" stroke="#3949AB" stroke-width="1.5"/>
+  <rect x="10" y="58" width="880" height="23" rx="5" fill="#3949AB"/>
+  <rect x="10" y="74" width="880" height="7" fill="#3949AB"/>
+  <text x="450" y="74" text-anchor="middle" font-size="10.5" font-weight="700" fill="#E8EAF6" letter-spacing="2">GOVERNANCE PLANE  —  PRODUCT · SECURITY · GTM</text>
+  <text x="450" y="100" text-anchor="middle" font-size="10" fill="#9FA8DA" font-style="italic">Business value  ×  Required autonomy  ×  Potential blast radius</text>
+  <!-- Four owner columns -->
+  <text x="35" y="120" font-size="9" font-weight="600" fill="#7986CB">PM</text>
+  <text x="35" y="133" font-size="8.5" fill="#7986CB">job · tools · minimum autonomy</text>
+  <text x="35" y="145" font-size="8.5" fill="#7986CB">uncertainty behavior · safe failure</text>
+  <line x1="238" y1="110" x2="238" y2="155" stroke="#3949AB" stroke-width="0.5"/>
+  <text x="248" y="120" font-size="9" font-weight="600" fill="#7986CB">Security / IAM</text>
+  <text x="248" y="133" font-size="8.5" fill="#7986CB">identity · access · delegation</text>
+  <text x="248" y="145" font-size="8.5" fill="#7986CB">policy · containment · restoration</text>
+  <line x1="458" y1="110" x2="458" y2="155" stroke="#3949AB" stroke-width="0.5"/>
+  <text x="468" y="120" font-size="9" font-weight="600" fill="#7986CB">PMM</text>
+  <text x="468" y="133" font-size="8.5" fill="#7986CB">capabilities · what customers control</text>
+  <text x="468" y="145" font-size="8.5" fill="#7986CB">what is logged · what can be stopped</text>
+  <line x1="678" y1="110" x2="678" y2="155" stroke="#3949AB" stroke-width="0.5"/>
+  <text x="688" y="120" font-size="9" font-weight="600" fill="#7986CB">GTM</text>
+  <text x="688" y="133" font-size="8.5" fill="#7986CB">use cases · customer segments</text>
+  <text x="688" y="145" font-size="8.5" fill="#7986CB">objection handling · expansion</text>
+  <!-- Bottom rule and note -->
+  <line x1="10" y1="155" x2="890" y2="155" stroke="#3949AB" stroke-width="0.5"/>
+  <text x="450" y="198" text-anchor="middle" font-size="8.5" fill="#5C6BC0" font-style="italic">Agent risk tier · Launch gates · Approval boundaries · Acceptable risk definition · Autonomy expansion criteria</text>
+
+  <!-- Arrow 1 -->
+  <line x1="450" y1="213" x2="450" y2="237" stroke="#546E7A" stroke-width="1.5" marker-end="url(#arr)"/>
+  <text x="462" y="228" font-size="8.5" fill="#546E7A" font-style="italic">sets policies, tiers and thresholds</text>
+
+  <!-- ═══════════════════════════════════════════════════════
+       THREAT PLANE  y=241  h=138
+  ═══════════════════════════════════════════════════════ -->
+  <rect x="10" y="241" width="880" height="138" rx="5" fill="#200505" stroke="#C62828" stroke-width="1.5"/>
+  <rect x="10" y="241" width="880" height="23" rx="5" fill="#C62828"/>
+  <rect x="10" y="257" width="880" height="7" fill="#C62828"/>
+  <text x="450" y="257" text-anchor="middle" font-size="10.5" font-weight="700" fill="#FFCDD2" letter-spacing="2">THREAT PLANE</text>
+  <!-- Left column -->
+  <text x="35" y="281" font-size="9" font-weight="600" fill="#EF9A9A">AI-enabled external attackers</text>
+  <text x="35" y="295" font-size="8.5" fill="#FFCDD2">• faster reconnaissance and code analysis</text>
+  <text x="35" y="309" font-size="8.5" fill="#FFCDD2">• credential and vulnerability exploitation</text>
+  <text x="35" y="323" font-size="8.5" fill="#FFCDD2">• adaptive multi-step attacks at scale</text>
+  <text x="35" y="337" font-size="8.5" fill="#FFCDD2">• attack both agent layer and infrastructure</text>
+  <line x1="445" y1="271" x2="445" y2="352" stroke="#C62828" stroke-width="0.5"/>
+  <!-- Right column -->
+  <text x="460" y="281" font-size="9" font-weight="600" fill="#EF9A9A">Untrusted internal inputs</text>
+  <text x="460" y="295" font-size="8.5" fill="#FFCDD2">• tickets, emails and retrieved documents</text>
+  <text x="460" y="309" font-size="8.5" fill="#FFCDD2">• APIs, plugins and external content</text>
+  <text x="460" y="323" font-size="8.5" fill="#FFCDD2">• injected instructions inside legitimate context</text>
+  <text x="460" y="337" font-size="8.5" fill="#FFCDD2">• goal hijacking via retrieved knowledge</text>
+  <!-- Bottom note -->
+  <line x1="10" y1="352" x2="890" y2="352" stroke="#C62828" stroke-width="0.5"/>
+  <text x="450" y="369" text-anchor="middle" font-size="8.5" fill="#EF9A9A" font-style="italic">An agent observes outcomes and adapts. Its authority must therefore be constrained externally, not inside its own reasoning.</text>
+
+  <!-- Arrow 2 -->
+  <line x1="450" y1="381" x2="450" y2="403" stroke="#546E7A" stroke-width="1.5" marker-end="url(#arr)"/>
+
+  <!-- ═══════════════════════════════════════════════════════
+       AI AGENT PLANE  y=407  h=143
+  ═══════════════════════════════════════════════════════ -->
+  <rect x="10" y="407" width="880" height="143" rx="5" fill="#081B45" stroke="#1565C0" stroke-width="1.5"/>
+  <rect x="10" y="407" width="880" height="23" rx="5" fill="#1565C0"/>
+  <rect x="10" y="423" width="880" height="7" fill="#1565C0"/>
+  <text x="450" y="423" text-anchor="middle" font-size="10.5" font-weight="700" fill="#E3F2FD" letter-spacing="2">1  ·  AI AGENT PLANE</text>
+  <!-- Left column -->
+  <text x="35" y="447" font-size="9" font-weight="600" fill="#90CAF9">Components</text>
+  <text x="35" y="461" font-size="8.5" fill="#BBDEFB">Model  ·  Planner / Reasoning  ·  Retrieval</text>
+  <text x="35" y="475" font-size="8.5" fill="#BBDEFB">Memory / preserved state  ·  Tool selection</text>
+  <text x="35" y="489" font-size="8.5" fill="#BBDEFB">Observation and next-step adjustment</text>
+  <line x1="445" y1="437" x2="445" y2="536" stroke="#1565C0" stroke-width="0.5"/>
+  <!-- Right column -->
+  <text x="460" y="447" font-size="9" font-weight="600" fill="#90CAF9">Constraints</text>
+  <text x="460" y="461" font-size="8.5" fill="#BBDEFB">May dynamically choose how to pursue a goal</text>
+  <text x="460" y="475" font-size="8.5" fill="#BBDEFB">Cannot authorize itself or expand its own access</text>
+  <text x="460" y="489" font-size="8.5" fill="#BBDEFB">Cannot bypass policy or self-delegate authority</text>
+  <!-- Bottom note -->
+  <line x1="10" y1="502" x2="890" y2="502" stroke="#1565C0" stroke-width="0.5"/>
+  <text x="450" y="520" text-anchor="middle" font-size="8.5" fill="#64B5F6" font-style="italic">Its reasoning may adapt.  Its authority must not.</text>
+  <text x="450" y="534" text-anchor="middle" font-size="8" fill="#42A5F5">Manipulated input → legitimate tool → observe outcome → next tool → adapt toward corrupted objective</text>
+
+  <!-- Arrow 3 — proposes -->
+  <line x1="450" y1="553" x2="450" y2="594" stroke="#546E7A" stroke-width="1.5" marker-end="url(#arr)"/>
+  <text x="462" y="563" font-size="8.5" fill="#546E7A" font-style="italic">proposes:</text>
+  <text x="462" y="576" font-size="8" fill="#546E7A">agent ID  ·  delegated user  ·  task  ·  tool  ·  action  ·  resource  ·  retrieved context</text>
+
+  <!-- ═══════════════════════════════════════════════════════
+       IDENTITY & DELEGATION PLANE  y=598  h=163
+  ═══════════════════════════════════════════════════════ -->
+  <rect x="10" y="598" width="880" height="163" rx="5" fill="#081E0F" stroke="#2E7D32" stroke-width="1.5"/>
+  <rect x="10" y="598" width="880" height="23" rx="5" fill="#2E7D32"/>
+  <rect x="10" y="614" width="880" height="7" fill="#2E7D32"/>
+  <text x="450" y="614" text-anchor="middle" font-size="10.5" font-weight="700" fill="#E8F5E9" letter-spacing="2">2  ·  IDENTITY &amp; DELEGATION PLANE</text>
+  <!-- Three columns -->
+  <text x="35" y="638" font-size="9" font-weight="600" fill="#A5D6A7">Agent Registry</text>
+  <text x="35" y="652" font-size="8.5" fill="#C8E6C9">• unique identity and purpose</text>
+  <text x="35" y="666" font-size="8.5" fill="#C8E6C9">• business and technical owners</text>
+  <text x="35" y="680" font-size="8.5" fill="#C8E6C9">• autonomy tier assignment</text>
+  <text x="35" y="694" font-size="8.5" fill="#C8E6C9">• approved tools and data</text>
+  <text x="35" y="708" font-size="8.5" fill="#C8E6C9">• expiration and review date</text>
+  <line x1="300" y1="626" x2="300" y2="720" stroke="#2E7D32" stroke-width="0.5"/>
+  <text x="315" y="638" font-size="9" font-weight="600" fill="#A5D6A7">Delegation Model</text>
+  <text x="315" y="652" font-size="8.5" fill="#C8E6C9">• acting as itself or for a user</text>
+  <text x="315" y="666" font-size="8.5" fill="#C8E6C9">• scope · permitted actions · expiry</text>
+  <text x="315" y="680" font-size="8.5" fill="#C8E6C9">• no agent-to-agent delegation</text>
+  <text x="315" y="694" font-size="8.5" fill="#C8E6C9">• no self-elevation permitted</text>
+  <text x="315" y="708" font-size="8.5" fill="#C8E6C9">• impersonation restrictions</text>
+  <line x1="590" y1="626" x2="590" y2="720" stroke="#2E7D32" stroke-width="0.5"/>
+  <text x="605" y="638" font-size="9" font-weight="600" fill="#A5D6A7">Workload Credentials</text>
+  <text x="605" y="652" font-size="8.5" fill="#C8E6C9">• non-human workload identity</text>
+  <text x="605" y="666" font-size="8.5" fill="#C8E6C9">• short-lived credentials</text>
+  <text x="605" y="680" font-size="8.5" fill="#C8E6C9">• non-shareable</text>
+  <text x="605" y="694" font-size="8.5" fill="#C8E6C9">• revocable on suspicion</text>
+  <text x="605" y="708" font-size="8.5" fill="#C8E6C9">• rotation enforced</text>
+  <!-- Bottom note -->
+  <line x1="10" y1="720" x2="890" y2="720" stroke="#2E7D32" stroke-width="0.5"/>
+  <text x="450" y="739" text-anchor="middle" font-size="8.5" fill="#81C784" font-style="italic">Every agent has a registered identity, a named owner, and an approved scope before it may act.</text>
+  <text x="450" y="752" text-anchor="middle" font-size="8" fill="#66BB6A">No anonymous agents  ·  No agent acts beyond its registered purpose  ·  No shared credentials</text>
+
+  <!-- Arrow 4 -->
+  <line x1="450" y1="763" x2="450" y2="785" stroke="#546E7A" stroke-width="1.5" marker-end="url(#arr)"/>
+
+  <!-- ═══════════════════════════════════════════════════════
+       POLICY & ENFORCEMENT PLANE  y=789  h=208
+  ═══════════════════════════════════════════════════════ -->
+  <rect x="10" y="789" width="880" height="208" rx="5" fill="#0E0620" stroke="#6A1B9A" stroke-width="1.5"/>
+  <rect x="10" y="789" width="880" height="23" rx="5" fill="#6A1B9A"/>
+  <rect x="10" y="805" width="880" height="7" fill="#6A1B9A"/>
+  <text x="450" y="805" text-anchor="middle" font-size="10.5" font-weight="700" fill="#EDE7F6" letter-spacing="2">3  ·  POLICY &amp; ENFORCEMENT PLANE</text>
+  <text x="450" y="826" text-anchor="middle" font-size="9" fill="#CE93D8">Tool Gateway / External Policy Enforcement Point  —  every proposed tool call passes through this layer</text>
+  <!-- Left column -->
+  <text x="35" y="845" font-size="8.5" fill="#E1BEE7">• Is the agent registered and active?</text>
+  <text x="35" y="859" font-size="8.5" fill="#E1BEE7">• Is the delegated authority valid and in scope?</text>
+  <text x="35" y="873" font-size="8.5" fill="#E1BEE7">• Is the tool on the agent's approved list?</text>
+  <text x="35" y="887" font-size="8.5" fill="#E1BEE7">• Is the action permitted within that tool?</text>
+  <text x="35" y="901" font-size="8.5" fill="#E1BEE7">• Is the data within approved scope and classification?</text>
+  <line x1="445" y1="833" x2="445" y2="912" stroke="#6A1B9A" stroke-width="0.5"/>
+  <!-- Right column -->
+  <text x="460" y="845" font-size="8.5" fill="#E1BEE7">• Is the requested role privileged?</text>
+  <text x="460" y="859" font-size="8.5" fill="#E1BEE7">• Has volume or transaction risk crossed a threshold?</text>
+  <text x="460" y="873" font-size="8.5" fill="#E1BEE7">• Was prompt injection or suspicious context detected?</text>
+  <text x="460" y="887" font-size="8.5" fill="#E1BEE7">• Does separation of duties require another approver?</text>
+  <text x="460" y="901" font-size="8.5" fill="#E1BEE7">• Has the agent been auto-suspended for prior denials?</text>
+  <!-- Decision bar -->
+  <rect x="20" y="915" width="860" height="30" rx="4" fill="#160830" stroke="#7B1FA2" stroke-width="1"/>
+  <text x="168" y="935" text-anchor="middle" font-size="11" font-weight="700" fill="#69F0AE">&#10003;  ALLOW</text>
+  <text x="450" y="935" text-anchor="middle" font-size="11" font-weight="700" fill="#FFD740">&#9888;  HUMAN APPROVAL</text>
+  <text x="732" y="935" text-anchor="middle" font-size="11" font-weight="700" fill="#FF5252">&#10007;  DENY / SUSPEND</text>
+  <line x1="316" y1="915" x2="316" y2="945" stroke="#7B1FA2" stroke-width="0.8"/>
+  <line x1="584" y1="915" x2="584" y2="945" stroke="#7B1FA2" stroke-width="0.8"/>
+  <!-- Bottom note -->
+  <line x1="10" y1="949" x2="890" y2="949" stroke="#6A1B9A" stroke-width="0.5"/>
+  <text x="450" y="968" text-anchor="middle" font-size="9.5" fill="#CE93D8" font-style="italic">The model proposes. This layer authorizes.</text>
+  <text x="450" y="982" text-anchor="middle" font-size="8.5" fill="#AB47BC">Collect all violations before resolving  ·  DENY overrides APPROVAL_REQUIRED overrides ALLOW</text>
+
+  <!-- Arrow 5 -->
+  <line x1="450" y1="997" x2="450" y2="1018" stroke="#546E7A" stroke-width="1.5" marker-end="url(#arr)"/>
+
+  <!-- ═══════════════════════════════════════════════════════
+       ENTERPRISE IAM & RESOURCE PLANE  y=1022  h=170
+  ═══════════════════════════════════════════════════════ -->
+  <rect x="10" y="1022" width="880" height="170" rx="5" fill="#0A1520" stroke="#455A64" stroke-width="1.5"/>
+  <rect x="10" y="1022" width="880" height="23" rx="5" fill="#455A64"/>
+  <rect x="10" y="1038" width="880" height="7" fill="#455A64"/>
+  <text x="450" y="1038" text-anchor="middle" font-size="10.5" font-weight="700" fill="#ECEFF1" letter-spacing="2">4  ·  ENTERPRISE IAM &amp; RESOURCE PLANE</text>
+  <!-- Left column -->
+  <text x="35" y="1062" font-size="9" font-weight="600" fill="#B0BEC5">Traditional IAM Foundation</text>
+  <text x="35" y="1076" font-size="8.5" fill="#CFD8DC">Identity Provider / SSO  ·  IGA</text>
+  <text x="35" y="1090" font-size="8.5" fill="#CFD8DC">Provisioning and lifecycle management</text>
+  <text x="35" y="1104" font-size="8.5" fill="#CFD8DC">Identity stores  ·  Replication  ·  Reconciliation</text>
+  <text x="35" y="1118" font-size="8.5" fill="#CFD8DC">Schedulers  ·  Approval workflows  ·  Connectors</text>
+  <line x1="445" y1="1050" x2="445" y2="1130" stroke="#455A64" stroke-width="0.5"/>
+  <!-- Right column -->
+  <text x="460" y="1062" font-size="9" font-weight="600" fill="#B0BEC5">Enterprise Resources</text>
+  <text x="460" y="1076" font-size="8.5" fill="#CFD8DC">Cloud platforms  ·  On-premises systems</text>
+  <text x="460" y="1090" font-size="8.5" fill="#CFD8DC">Databases  ·  SaaS applications</text>
+  <text x="460" y="1104" font-size="8.5" fill="#CFD8DC">Ticketing  ·  Security tools  ·  APIs</text>
+  <text x="460" y="1118" font-size="8.5" fill="#CFD8DC">Data stores  ·  SIEM  ·  Monitoring</text>
+  <!-- Bottom note -->
+  <line x1="10" y1="1130" x2="890" y2="1130" stroke="#455A64" stroke-width="0.5"/>
+  <text x="450" y="1150" text-anchor="middle" font-size="9" fill="#90A4AE" font-style="italic">Cloud versus on-premises is not the trust boundary.</text>
+  <text x="450" y="1164" text-anchor="middle" font-size="9" fill="#78909C" font-style="italic">Identity, policy and enforced authority are the trust boundary.</text>
+  <text x="450" y="1179" text-anchor="middle" font-size="8" fill="#607D8B">Agents cross deployment boundaries by design. The enforcement point must travel with the identity.</text>
+
+  <!-- Arrow 6 -->
+  <line x1="450" y1="1193" x2="450" y2="1219" stroke="#546E7A" stroke-width="1.5" marker-end="url(#arr)"/>
+  <text x="462" y="1209" font-size="8.5" fill="#546E7A" font-style="italic">actions and telemetry</text>
+
+  <!-- ═══════════════════════════════════════════════════════
+       OBSERVABILITY & AI DEFENSE PLANE  y=1223  h=203
+  ═══════════════════════════════════════════════════════ -->
+  <rect x="10" y="1223" width="880" height="203" rx="5" fill="#001915" stroke="#00695C" stroke-width="1.5"/>
+  <rect x="10" y="1223" width="880" height="23" rx="5" fill="#00695C"/>
+  <rect x="10" y="1239" width="880" height="7" fill="#00695C"/>
+  <text x="450" y="1239" text-anchor="middle" font-size="10.5" font-weight="700" fill="#E0F2F1" letter-spacing="2">5  ·  OBSERVABILITY &amp; AI DEFENSE PLANE</text>
+  <!-- Three columns -->
+  <text x="35" y="1263" font-size="9" font-weight="600" fill="#80CBC4">Tamper-Evident Audit Trail</text>
+  <text x="35" y="1277" font-size="8.5" fill="#B2DFDB">• what the agent was asked</text>
+  <text x="35" y="1291" font-size="8.5" fill="#B2DFDB">• what it retrieved from context</text>
+  <text x="35" y="1305" font-size="8.5" fill="#B2DFDB">• identity and delegation used</text>
+  <text x="35" y="1319" font-size="8.5" fill="#B2DFDB">• action proposed</text>
+  <text x="35" y="1333" font-size="8.5" fill="#B2DFDB">• policies fired · outcome recorded</text>
+  <line x1="296" y1="1251" x2="296" y2="1347" stroke="#00695C" stroke-width="0.5"/>
+  <text x="311" y="1263" font-size="9" font-weight="600" fill="#80CBC4">Runtime Detection</text>
+  <text x="311" y="1277" font-size="8.5" fill="#B2DFDB">• abnormal tool sequences</text>
+  <text x="311" y="1291" font-size="8.5" fill="#B2DFDB">• repeated denied actions</text>
+  <text x="311" y="1305" font-size="8.5" fill="#B2DFDB">• provisioning bursts</text>
+  <text x="311" y="1319" font-size="8.5" fill="#B2DFDB">• behavior change after retrieval</text>
+  <text x="311" y="1333" font-size="8.5" fill="#B2DFDB">• data overreach · privilege escalation</text>
+  <line x1="590" y1="1251" x2="590" y2="1347" stroke="#00695C" stroke-width="0.5"/>
+  <text x="605" y="1263" font-size="9" font-weight="600" fill="#80CBC4">AI-Assisted Defense</text>
+  <text x="605" y="1277" font-size="8.5" fill="#B2DFDB">• correlate identity and security events</text>
+  <text x="605" y="1291" font-size="8.5" fill="#B2DFDB">• summarize incident timelines</text>
+  <text x="605" y="1305" font-size="8.5" fill="#B2DFDB">• identify affected accounts</text>
+  <text x="605" y="1319" font-size="8.5" fill="#B2DFDB">• recommend containment actions</text>
+  <text x="605" y="1333" font-size="8.5" fill="#B2DFDB">• same IAM controls apply to defense agents</text>
+  <!-- Bottom note -->
+  <line x1="10" y1="1347" x2="890" y2="1347" stroke="#00695C" stroke-width="0.5"/>
+  <text x="450" y="1366" text-anchor="middle" font-size="9" fill="#80CBC4" font-style="italic">AI assists investigation. It does not approve its own containment powers.</text>
+  <text x="450" y="1380" text-anchor="middle" font-size="8.5" fill="#4DB6AC">Defending the enterprise from AI  ·  Using AI to defend the enterprise  ·  Both require the same identity and policy controls</text>
+  <text x="450" y="1394" text-anchor="middle" font-size="8" fill="#26A69A">A security agent is not trusted because its stated purpose is security. It is trusted because its identity and authority are verified.</text>
+  <text x="450" y="1408" text-anchor="middle" font-size="8" fill="#1B8A7E">SHA-256 hash-chained audit log  ·  Auto-suspend on denial threshold  ·  Every decision recorded at evaluation time</text>
+
+  <!-- Arrow 7 -->
+  <line x1="450" y1="1428" x2="450" y2="1449" stroke="#546E7A" stroke-width="1.5" marker-end="url(#arr)"/>
+
+  <!-- ═══════════════════════════════════════════════════════
+       RESPONSE & RECOVERY PLANE  y=1453  h=160
+  ═══════════════════════════════════════════════════════ -->
+  <rect x="10" y="1453" width="880" height="160" rx="5" fill="#180800" stroke="#BF360C" stroke-width="1.5"/>
+  <rect x="10" y="1453" width="880" height="23" rx="5" fill="#BF360C"/>
+  <rect x="10" y="1469" width="880" height="7" fill="#BF360C"/>
+  <text x="450" y="1469" text-anchor="middle" font-size="10.5" font-weight="700" fill="#FBE9E7" letter-spacing="2">6  ·  RESPONSE &amp; RECOVERY PLANE</text>
+  <!-- Actions -->
+  <text x="35" y="1493" font-size="8.5" fill="#FFCCBC">• suspend the agent  ·  revoke credentials  ·  terminate sessions  ·  disable specific tools</text>
+  <text x="35" y="1507" font-size="8.5" fill="#FFCCBC">• quarantine malicious content  ·  identify affected identities and systems</text>
+  <text x="35" y="1521" font-size="8.5" fill="#FFCCBC">• reconstruct the attack path  ·  roll back where possible  ·  update policies and controls</text>
+  <!-- Bottom note -->
+  <line x1="10" y1="1533" x2="890" y2="1533" stroke="#BF360C" stroke-width="0.5"/>
+  <text x="450" y="1552" text-anchor="middle" font-size="9" fill="#FF8A65" font-style="italic">Restore only after human approval.</text>
+  <text x="450" y="1566" text-anchor="middle" font-size="8.5" fill="#FF7043">No agent restores itself. No tool re-enables itself. Human approval gate at every recovery step.</text>
+  <text x="450" y="1580" text-anchor="middle" font-size="8" fill="#F4511E">Evidence from response updates risk tiers, policy thresholds and product design for the next deployment decision.</text>
+  <text x="450" y="1594" text-anchor="middle" font-size="8" fill="#E64A19">Recovery is complete only when root cause is understood and policy is updated to prevent recurrence.</text>
+
+  <!-- FEEDBACK LOOP — dashed line right side, from bottom back to Governance -->
+  <line x1="880" y1="1613" x2="880" y2="85" stroke="#37474F" stroke-width="1.5" stroke-dasharray="5,3"/>
+  <polygon points="880,78 874,90 886,90" fill="#37474F"/>
+  <!-- Rotated label -->
+  <text transform="translate(893,860) rotate(90)" text-anchor="middle" font-size="8" fill="#546E7A">operational evidence feeds back into risk tiering · product design · policy · GTM strategy</text>
+
+  <!-- FOOTER -->
+  <line x1="10" y1="1630" x2="870" y2="1630" stroke="#1A237E" stroke-width="0.5"/>
+  <text x="440" y="1649" text-anchor="middle" font-size="8" fill="#283593">Veltara Financial Group  ·  Reference Architecture  ·  Vendor-neutral  ·  ai-agent-iam-blueprint</text>
+
+</svg>

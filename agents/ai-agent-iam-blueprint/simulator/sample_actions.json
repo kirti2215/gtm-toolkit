@@ -1,0 +1,139 @@
+[
+  {
+    "description": "Normal: Access review agent reads entitlement records via approved tool",
+    "agent_id": "iam-access-review-agent",
+    "tool": "identity_store_connector",
+    "action": "read_access_history",
+    "resource": "entitlement_records",
+    "context": {"task": "Q3 2026 access certification", "scope": "finance_department"}
+  },
+  {
+    "description": "Normal: Access review agent creates a review ticket",
+    "agent_id": "iam-access-review-agent",
+    "tool": "ticketing_system",
+    "action": "create_review_ticket",
+    "resource": "ticketing_system",
+    "context": {"account": "j.patel@veltara.com", "recommendation": "Dormant 90+ days"}
+  },
+  {
+    "description": "Blocked: Access review agent tries to disable an account (explicit deny + wrong tool)",
+    "agent_id": "iam-access-review-agent",
+    "tool": "provisioning_engine",
+    "action": "disable_account",
+    "resource": "account_metadata",
+    "context": {"account": "j.patel@veltara.com"}
+  },
+  {
+    "description": "Blocked: Access review agent tries to grant a privileged role",
+    "agent_id": "iam-access-review-agent",
+    "tool": "provisioning_engine",
+    "action": "grant_privileged_role",
+    "resource": "account_metadata",
+    "context": {"account": "m.chen@veltara.com", "role": "IdentityAdmin"}
+  },
+  {
+    "description": "Blocked: Access review agent accesses denied data (MFA seeds)",
+    "agent_id": "iam-access-review-agent",
+    "tool": "identity_store_connector",
+    "action": "read_access_history",
+    "resource": "mfa_seeds",
+    "context": {"task": "MFA audit from unknown workflow"}
+  },
+  {
+    "description": "Normal: Provisioning agent reads an access request",
+    "agent_id": "iam-provisioning-agent",
+    "tool": "ticketing_system",
+    "action": "read_access_request",
+    "resource": "access_requests",
+    "context": {"ticket_id": "REQ-20260801-0441", "requestor": "a.kumar@veltara.com", "role": "DataAnalystRead"}
+  },
+  {
+    "description": "Approval required: Provisioning agent tries to grant GlobalAdmin (privileged role name)",
+    "agent_id": "iam-provisioning-agent",
+    "tool": "provisioning_engine",
+    "action": "provision_standard_role",
+    "resource": "account_metadata",
+    "context": {"account": "a.kumar@veltara.com", "role": "GlobalAdmin"}
+  },
+  {
+    "description": "Approval required: Provisioning agent requests privileged role via privileged action",
+    "agent_id": "iam-provisioning-agent",
+    "tool": "provisioning_engine",
+    "action": "provision_privileged_role",
+    "resource": "account_metadata",
+    "context": {"account": "a.kumar@veltara.com", "role": "IdentityAdmin"}
+  },
+  {
+    "description": "Normal: Investigation agent reads authentication events (with delegation)",
+    "agent_id": "security-investigation-agent",
+    "tool": "event_log_reader",
+    "action": "read_authentication_events",
+    "resource": "authentication_events",
+    "delegation_mode": "delegated",
+    "delegating_user": "soc.analyst.01@veltara.com",
+    "delegation_scope": ["read_authentication_events", "read_access_anomaly_alerts", "summarize_investigation"],
+    "delegation_expires_at": "2027-08-04T00:00:00+00:00",
+    "context": {"incident": "INC-2026-0119", "target": "r.osei@veltara.com"}
+  },
+  {
+    "description": "Blocked: Investigation agent requests full identity record (scope overreach + denied data)",
+    "agent_id": "security-investigation-agent",
+    "tool": "identity_store_connector",
+    "action": "read_account_metadata",
+    "resource": "full_identity_record",
+    "delegation_mode": "delegated",
+    "delegating_user": "soc.analyst.01@veltara.com",
+    "delegation_scope": ["read_authentication_events"],
+    "delegation_expires_at": "2027-08-04T00:00:00+00:00",
+    "context": {"incident": "INC-2026-0119"}
+  },
+  {
+    "description": "Blocked: Investigation agent tries to revoke credentials (explicit deny + always-approval)",
+    "agent_id": "security-investigation-agent",
+    "tool": "credential_manager",
+    "action": "revoke_credentials",
+    "resource": "account_metadata",
+    "delegation_mode": "delegated",
+    "delegating_user": "soc.analyst.01@veltara.com",
+    "delegation_scope": ["revoke_credentials"],
+    "delegation_expires_at": "2027-08-04T00:00:00+00:00",
+    "context": {"account": "r.osei@veltara.com"}
+  },
+  {
+    "description": "Blocked: Suspended agent attempts any action",
+    "agent_id": "customer-offboarding-agent",
+    "tool": "identity_store_connector",
+    "action": "read_account_metadata",
+    "resource": "customer_records",
+    "context": {"customer": "VLT-CUST-00847"}
+  },
+  {
+    "description": "Blocked: Unregistered shadow agent attempts provisioning",
+    "agent_id": "unknown-shadow-agent-v3",
+    "tool": "provisioning_engine",
+    "action": "provision_standard_role",
+    "resource": "account_metadata",
+    "context": {"role": "GlobalAdmin"}
+  },
+  {
+    "description": "Blocked: Investigation agent missing required delegation",
+    "agent_id": "security-investigation-agent",
+    "tool": "event_log_reader",
+    "action": "read_authentication_events",
+    "resource": "authentication_events",
+    "delegation_mode": "service_identity",
+    "context": {"task": "Automated scan — no delegating user"}
+  },
+  {
+    "description": "Blocked: Delegation with expired timestamp",
+    "agent_id": "security-investigation-agent",
+    "tool": "event_log_reader",
+    "action": "read_authentication_events",
+    "resource": "authentication_events",
+    "delegation_mode": "delegated",
+    "delegating_user": "soc.analyst.01@veltara.com",
+    "delegation_scope": ["read_authentication_events"],
+    "delegation_expires_at": "2025-01-01T00:00:00+00:00",
+    "context": {"incident": "INC-2026-OLD"}
+  }
+]

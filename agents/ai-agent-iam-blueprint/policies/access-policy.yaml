@@ -1,0 +1,146 @@
+# Access Policy — Veltara Financial Group
+# Machine-readable by the policy engine.
+# Defines the tool catalog (tool → permitted actions) and per-agent permission rules.
+# Rules are additive; the engine collects all violations before resolving a final decision.
+# Default on no matching rule: DENY.
+
+version: "1.1"
+effective_date: "2026-08-01"
+owner: identity-governance
+
+# ── Tool catalog ──────────────────────────────────────────────────────────────
+# Defines every tool the system exposes and the actions available within it.
+# An agent may only invoke an action if:
+#   (1) the tool is listed in the agent's approved_tools in the registry, AND
+#   (2) the action is listed under that tool here.
+
+tool_catalog:
+
+  identity_store_connector:
+    description: "Read access to the identity store, entitlement records and role definitions"
+    actions:
+      - read_access_history
+      - read_entitlement_records
+      - read_role_definitions
+      - compare_usage_patterns
+      - read_account_metadata
+
+  provisioning_engine:
+    description: "Role provisioning and account lifecycle management"
+    actions:
+      - provision_standard_role
+      - provision_privileged_role
+      - disable_account
+      - enable_account
+      - modify_account_metadata
+      - log_provisioning_event
+
+  ticketing_system:
+    description: "Access request and certification ticket management"
+    actions:
+      - read_access_request
+      - create_review_ticket
+      - update_ticket_status
+      - send_review_notification
+      - notify_requestor
+
+  approver_directory:
+    description: "Approver chain and directory lookup (read-only)"
+    actions:
+      - validate_approver_chain
+      - read_approver_directory
+
+  event_log_reader:
+    description: "Read authentication events and system event logs"
+    actions:
+      - read_authentication_events
+      - read_access_anomaly_alerts
+      - read_system_event_logs
+
+  investigation_tools:
+    description: "Correlation and investigation capabilities (read-only outputs)"
+    actions:
+      - correlate_events
+      - summarize_investigation
+      - recommend_containment_steps
+      - create_incident_ticket
+
+  reporting_engine:
+    description: "Read-only analysis and recommendation outputs"
+    actions:
+      - recommend_role_removal
+      - generate_compliance_report
+      - bulk_export_identity_data
+
+  credential_manager:
+    description: "Credential and session management (high-privilege)"
+    actions:
+      - revoke_credentials
+      - issue_emergency_credential
+      - terminate_session
+
+# ── Per-agent permission rules ─────────────────────────────────────────────────
+# These provide explicit DENY overrides for actions an agent must never perform,
+# even if the tool is approved. The engine evaluates these alongside the broader
+# authorization checks. A DENY here contributes to the violation list.
+
+per_agent_rules:
+
+  iam-access-review-agent:
+    explicit_deny:
+      - action: disable_account
+        reason: "Tier 2 advisory role. Account disablement requires direct human action."
+      - action: grant_privileged_role
+        reason: "Explicitly prohibited. Privileged grants require a named human approver."
+      - action: modify_own_permissions
+        reason: "Self-modification is prohibited for all agents."
+      - action: bulk_export_identity_data
+        reason: "Bulk export requires explicit security approval outside this agent's scope."
+      - action: revoke_credentials
+        reason: "Credential revocation is a privileged action beyond this agent's tier."
+      - action: provision_standard_role
+        reason: "This agent recommends; it does not provision."
+      - action: provision_privileged_role
+        reason: "This agent recommends; it does not provision."
+
+  iam-provisioning-agent:
+    explicit_deny:
+      - action: modify_own_permissions
+        reason: "Self-modification is prohibited for all agents."
+      - action: bulk_export_identity_data
+        reason: "Not within provisioning agent scope."
+      - action: revoke_credentials
+        reason: "Credential revocation is outside this agent's approved scope."
+
+  security-investigation-agent:
+    explicit_deny:
+      - action: revoke_credentials
+        reason: "Tier 1 read-only. Credential revocation requires a named security analyst."
+      - action: disable_account
+        reason: "Tier 1 read-only. Account disablement requires a named security analyst."
+      - action: bulk_export_identity_data
+        reason: "Bulk export is not within investigation scope. Request specific records through approval workflow."
+      - action: read_full_identity_record
+        reason: "Investigation agent accesses event logs and anomaly alerts, not complete identity records."
+      - action: provision_standard_role
+        reason: "Outside investigation agent scope."
+      - action: provision_privileged_role
+        reason: "Outside investigation agent scope."
+
+# ── Volume thresholds ─────────────────────────────────────────────────────────
+# Actions that require human approval when volume exceeds the defined threshold.
+
+volume_thresholds:
+  - agent_id: iam-provisioning-agent
+    action: provision_standard_role
+    threshold: 20
+    window_minutes: 60
+    approval_required_above_threshold: true
+    reason: "Provisioning above threshold may indicate manipulated pipeline."
+
+  - agent_id: iam-access-review-agent
+    action: create_review_ticket
+    threshold: 100
+    window_minutes: 60
+    approval_required_above_threshold: true
+    reason: "Unusually high ticket creation volume requires review."

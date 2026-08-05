@@ -1,0 +1,150 @@
+# Agent Registry — Veltara Financial Group
+# Declarative configuration only. Never written to at runtime.
+# Mutable state (suspension, action counts) lives in runtime/agent-state.json.
+#
+# approved_tools references tool names defined in policies/access-policy.yaml.
+# The engine validates: (1) tool is approved, (2) action is within that tool.
+
+agents:
+
+  - id: iam-access-review-agent
+    display_name: "IAM Access Review Agent"
+    version: "1.2.0"
+    autonomy_tier: 2
+    business_owner: identity-governance
+    technical_owner: ai-platform-team
+    approved_purpose: >
+      Reviews user access entitlements against role definitions and usage patterns.
+      Identifies dormant accounts, excessive permissions, and policy violations.
+      Creates review tickets for human-led certification campaigns.
+      Does not provision or modify any account directly.
+    approved_tools:
+      - identity_store_connector
+      - ticketing_system
+    approved_data:
+      entitlement_records: read
+      access_logs: read
+      role_definitions: read
+      account_metadata: read
+    denied_data:
+      - authentication_credentials
+      - mfa_seeds
+      - full_identity_record
+      - payment_or_financial_data
+      - legal_or_compliance_files
+      - privileged_role_definitions
+      - complete_access_history_bulk_export
+    data_classification_ceiling: confidential
+    max_daily_actions: 500
+    requires_delegation: false
+    credential_type: service_identity
+    credential_ttl_minutes: 60
+    review_date: "2026-10-01"
+    status: active
+
+  - id: iam-provisioning-agent
+    display_name: "IAM Provisioning Agent"
+    version: "0.9.1"
+    autonomy_tier: 2
+    business_owner: identity-operations
+    technical_owner: ai-platform-team
+    approved_purpose: >
+      Processes standard access requests submitted through the ticketing system.
+      Provisions approved, non-privileged roles within defined thresholds.
+      Escalates privileged or non-standard requests to human reviewers.
+      Must not autonomously provision any role on the privileged_role_names list.
+    approved_tools:
+      - provisioning_engine
+      - ticketing_system
+      - approver_directory
+    approved_data:
+      access_requests: read
+      role_catalog: read
+      approver_directory: read
+      account_metadata: read_write
+    denied_data:
+      - authentication_credentials
+      - mfa_seeds
+      - full_identity_record
+      - financial_or_payment_data
+      - legal_or_compliance_files
+      - complete_access_history_bulk_export
+    data_classification_ceiling: confidential
+    max_daily_actions: 200
+    requires_delegation: false
+    credential_type: service_identity
+    credential_ttl_minutes: 30
+    review_date: "2026-10-01"
+    status: active
+
+  - id: security-investigation-agent
+    display_name: "Security Investigation Agent"
+    version: "1.0.3"
+    autonomy_tier: 1
+    business_owner: security-operations
+    technical_owner: ai-platform-team
+    approved_purpose: >
+      Assists security analysts by correlating authentication events, access
+      anomalies, and system alerts. Summarizes investigation timelines and
+      recommends containment steps. Does not take containment actions autonomously.
+      Must operate under explicit user delegation from a named security analyst.
+    approved_tools:
+      - event_log_reader
+      - investigation_tools
+    approved_data:
+      authentication_events: read
+      access_anomaly_alerts: read
+      system_event_logs: read
+      account_metadata: read
+    denied_data:
+      - full_identity_record
+      - authentication_credentials
+      - mfa_seeds
+      - financial_data
+      - complete_access_history_bulk_export
+      - privileged_role_definitions
+    data_classification_ceiling: confidential
+    max_daily_actions: 1000
+    requires_delegation: true
+    permitted_delegation_modes:
+      - delegated
+    credential_type: delegated
+    credential_ttl_minutes: 120
+    review_date: "2026-10-01"
+    status: active
+
+  - id: customer-offboarding-agent
+    display_name: "Customer Offboarding Agent"
+    version: "0.5.0"
+    autonomy_tier: 3
+    business_owner: customer-operations
+    technical_owner: ai-platform-team
+    approved_purpose: >
+      Executes structured offboarding workflows for departing customers.
+      Revokes access, archives data, and closes accounts in coordination
+      with compliance and legal hold requirements.
+    approved_tools:
+      - identity_store_connector
+      - credential_manager
+      - reporting_engine
+    approved_data:
+      customer_records: read
+      access_entitlements: read_write
+      account_metadata: read_write
+    denied_data:
+      - authentication_credentials
+      - internal_employee_records
+      - financial_transaction_data
+      - mfa_seeds
+    data_classification_ceiling: confidential
+    max_daily_actions: 50
+    requires_delegation: true
+    permitted_delegation_modes:
+      - delegated
+    credential_type: delegated
+    credential_ttl_minutes: 60
+    review_date: "2026-09-01"
+    status: suspended
+    suspension_reason: >
+      Suspended 2026-07-14 pending review of legal-hold bypass incident IR-2026-0047.
+      Do not restore without approval from Chief Risk Officer and CISO.

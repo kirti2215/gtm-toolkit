@@ -1,0 +1,156 @@
+<svg viewBox="0 0 900 620" xmlns="http://www.w3.org/2000/svg" font-family="'Segoe UI', Arial, sans-serif">
+
+  <!-- Background -->
+  <rect width="900" height="620" fill="#f8f9fa"/>
+
+  <!-- Title -->
+  <text x="450" y="36" text-anchor="middle" font-size="17" font-weight="700" fill="#1a1a2e">Traditional Enterprise IAM Architecture</text>
+  <text x="450" y="56" text-anchor="middle" font-size="11" fill="#6c757d">All identities are human, service accounts, or deterministic applications</text>
+
+  <!-- ── Row 1: Identity Sources ── -->
+  <!-- Employees -->
+  <rect x="60" y="88" width="130" height="52" rx="6" fill="#e8f4fd" stroke="#2196f3" stroke-width="1.5"/>
+  <text x="125" y="110" text-anchor="middle" font-size="11" font-weight="600" fill="#1565c0">Employees</text>
+  <text x="125" y="126" text-anchor="middle" font-size="10" fill="#1565c0">Contractors</text>
+
+  <!-- Service Accounts -->
+  <rect x="218" y="88" width="130" height="52" rx="6" fill="#e8f4fd" stroke="#2196f3" stroke-width="1.5"/>
+  <text x="283" y="110" text-anchor="middle" font-size="11" font-weight="600" fill="#1565c0">Service Accounts</text>
+  <text x="283" y="126" text-anchor="middle" font-size="10" fill="#1565c0">Integrations</text>
+
+  <!-- HRIS -->
+  <rect x="376" y="88" width="130" height="52" rx="6" fill="#fff3e0" stroke="#ff9800" stroke-width="1.5"/>
+  <text x="441" y="110" text-anchor="middle" font-size="11" font-weight="600" fill="#e65100">HRIS / HR System</text>
+  <text x="441" y="126" text-anchor="middle" font-size="10" fill="#e65100">Authoritative Source</text>
+
+  <!-- Administrators -->
+  <rect x="534" y="88" width="130" height="52" rx="6" fill="#e8f4fd" stroke="#2196f3" stroke-width="1.5"/>
+  <text x="599" y="110" text-anchor="middle" font-size="11" font-weight="600" fill="#1565c0">Administrators</text>
+  <text x="599" y="126" text-anchor="middle" font-size="10" fill="#1565c0">Privileged Users</text>
+
+  <!-- Arrows down to IdP -->
+  <line x1="125" y1="140" x2="125" y2="164" stroke="#90caf9" stroke-width="1.5" marker-end="url(#arr)"/>
+  <line x1="283" y1="140" x2="283" y2="164" stroke="#90caf9" stroke-width="1.5" marker-end="url(#arr)"/>
+  <line x1="441" y1="140" x2="441" y2="164" stroke="#ffa726" stroke-width="1.5" marker-end="url(#arr)"/>
+  <line x1="599" y1="140" x2="599" y2="164" stroke="#90caf9" stroke-width="1.5" marker-end="url(#arr)"/>
+  <!-- Connect to IdP center -->
+  <line x1="125" y1="164" x2="380" y2="175" stroke="#90caf9" stroke-width="1.2"/>
+  <line x1="283" y1="164" x2="380" y2="175" stroke="#90caf9" stroke-width="1.2"/>
+  <line x1="441" y1="164" x2="440" y2="175" stroke="#ffa726" stroke-width="1.2"/>
+  <line x1="599" y1="164" x2="500" y2="175" stroke="#90caf9" stroke-width="1.2"/>
+
+  <!-- ── Row 2: Identity Provider / SSO ── -->
+  <rect x="320" y="175" width="250" height="52" rx="8" fill="#1565c0" stroke="#0d47a1" stroke-width="1.5"/>
+  <text x="445" y="198" text-anchor="middle" font-size="12" font-weight="700" fill="white">Identity Provider / SSO</text>
+  <text x="445" y="214" text-anchor="middle" font-size="10" fill="#bbdefb">Authentication · Federation · MFA</text>
+
+  <!-- Arrow down to IAM Platform -->
+  <line x1="445" y1="227" x2="445" y2="255" stroke="#1565c0" stroke-width="2" marker-end="url(#arr-dark)"/>
+
+  <!-- ── Row 3: IAM Platform ── -->
+  <rect x="280" y="255" width="330" height="56" rx="8" fill="#1a237e" stroke="#0d47a1" stroke-width="1.5"/>
+  <text x="445" y="280" text-anchor="middle" font-size="12" font-weight="700" fill="white">IAM / Provisioning Platform</text>
+  <text x="445" y="296" text-anchor="middle" font-size="10" fill="#c5cae9">Provisioning and Lifecycle Management</text>
+
+  <!-- Three branches from IAM Platform -->
+  <line x1="370" y1="311" x2="210" y2="345" stroke="#5c6bc0" stroke-width="1.5" marker-end="url(#arr-m)"/>
+  <line x1="445" y1="311" x2="445" y2="345" stroke="#5c6bc0" stroke-width="1.5" marker-end="url(#arr-m)"/>
+  <line x1="520" y1="311" x2="680" y2="345" stroke="#5c6bc0" stroke-width="1.5" marker-end="url(#arr-m)"/>
+
+  <!-- ── Row 4: Core IAM Components ── -->
+  <!-- Identity DB -->
+  <rect x="96" y="345" width="228" height="56" rx="6" fill="#e8eaf6" stroke="#5c6bc0" stroke-width="1.5"/>
+  <text x="210" y="368" text-anchor="middle" font-size="11" font-weight="600" fill="#283593">Identity Database</text>
+  <text x="210" y="384" text-anchor="middle" font-size="10" fill="#3949ab">Replication Nodes · Directory</text>
+
+  <!-- Schedulers -->
+  <rect x="336" y="345" width="218" height="56" rx="6" fill="#e8eaf6" stroke="#5c6bc0" stroke-width="1.5"/>
+  <text x="445" y="368" text-anchor="middle" font-size="11" font-weight="600" fill="#283593">Schedulers &amp; Reconciliation</text>
+  <text x="445" y="384" text-anchor="middle" font-size="10" fill="#3949ab">Sync Jobs · Deprovisioning · Audits</text>
+
+  <!-- Policy Engine -->
+  <rect x="566" y="345" width="228" height="56" rx="6" fill="#e8eaf6" stroke="#5c6bc0" stroke-width="1.5"/>
+  <text x="680" y="368" text-anchor="middle" font-size="11" font-weight="600" fill="#283593">Policy &amp; Approval Workflows</text>
+  <text x="680" y="384" text-anchor="middle" font-size="10" fill="#3949ab">Role Catalog · Access Requests</text>
+
+  <!-- Arrows down to App Connectors -->
+  <line x1="210" y1="401" x2="210" y2="432" stroke="#5c6bc0" stroke-width="1.5" marker-end="url(#arr-m)"/>
+  <line x1="445" y1="401" x2="445" y2="432" stroke="#5c6bc0" stroke-width="1.5" marker-end="url(#arr-m)"/>
+  <line x1="680" y1="401" x2="680" y2="432" stroke="#5c6bc0" stroke-width="1.5" marker-end="url(#arr-m)"/>
+  <!-- Connect to connector row -->
+  <line x1="210" y1="432" x2="445" y2="432" stroke="#9fa8da" stroke-width="1.2"/>
+  <line x1="680" y1="432" x2="445" y2="432" stroke="#9fa8da" stroke-width="1.2"/>
+  <line x1="445" y1="432" x2="445" y2="440" stroke="#9fa8da" stroke-width="1.2" marker-end="url(#arr-m)"/>
+
+  <!-- ── Row 5: Application Connectors ── -->
+  <rect x="280" y="440" width="330" height="48" rx="6" fill="#ede7f6" stroke="#7e57c2" stroke-width="1.5"/>
+  <text x="445" y="462" text-anchor="middle" font-size="11" font-weight="600" fill="#4a148c">Application Connectors</text>
+  <text x="445" y="476" text-anchor="middle" font-size="10" fill="#6a1b9a">SCIM · REST · LDAP · JDBC</text>
+
+  <!-- Arrow to systems -->
+  <line x1="445" y1="488" x2="445" y2="510" stroke="#7e57c2" stroke-width="1.5" marker-end="url(#arr-p)"/>
+  <line x1="445" y1="510" x2="175" y2="510" stroke="#9fa8da" stroke-width="1.2"/>
+  <line x1="445" y1="510" x2="715" y2="510" stroke="#9fa8da" stroke-width="1.2"/>
+
+  <!-- ── Row 6: Target Systems ── -->
+  <rect x="60" y="518" width="120" height="44" rx="5" fill="#fce4ec" stroke="#e91e63" stroke-width="1.2"/>
+  <text x="120" y="537" text-anchor="middle" font-size="10" font-weight="600" fill="#880e4f">Cloud Apps</text>
+  <text x="120" y="551" text-anchor="middle" font-size="9" fill="#880e4f">M365 · Salesforce</text>
+
+  <rect x="200" y="518" width="120" height="44" rx="5" fill="#fce4ec" stroke="#e91e63" stroke-width="1.2"/>
+  <text x="260" y="537" text-anchor="middle" font-size="10" font-weight="600" fill="#880e4f">Databases</text>
+  <text x="260" y="551" text-anchor="middle" font-size="9" fill="#880e4f">SQL · NoSQL</text>
+
+  <rect x="340" y="518" width="120" height="44" rx="5" fill="#fce4ec" stroke="#e91e63" stroke-width="1.2"/>
+  <text x="400" y="537" text-anchor="middle" font-size="10" font-weight="600" fill="#880e4f">ERP / Finance</text>
+  <text x="400" y="551" text-anchor="middle" font-size="9" fill="#880e4f">SAP · Oracle</text>
+
+  <rect x="480" y="518" width="120" height="44" rx="5" fill="#fce4ec" stroke="#e91e63" stroke-width="1.2"/>
+  <text x="540" y="537" text-anchor="middle" font-size="10" font-weight="600" fill="#880e4f">Internal Systems</text>
+  <text x="540" y="551" text-anchor="middle" font-size="9" fill="#880e4f">HR · Ticketing</text>
+
+  <rect x="620" y="518" width="120" height="44" rx="5" fill="#fce4ec" stroke="#e91e63" stroke-width="1.2"/>
+  <text x="680" y="537" text-anchor="middle" font-size="10" font-weight="600" fill="#880e4f">Network / VPN</text>
+  <text x="680" y="551" text-anchor="middle" font-size="9" fill="#880e4f">Firewall · PAM</text>
+
+  <!-- Lines from connector to systems -->
+  <line x1="120" y1="510" x2="120" y2="518" stroke="#ce93d8" stroke-width="1"/>
+  <line x1="260" y1="510" x2="260" y2="518" stroke="#ce93d8" stroke-width="1"/>
+  <line x1="400" y1="510" x2="400" y2="518" stroke="#ce93d8" stroke-width="1"/>
+  <line x1="540" y1="510" x2="540" y2="518" stroke="#ce93d8" stroke-width="1"/>
+  <line x1="680" y1="510" x2="680" y2="518" stroke="#ce93d8" stroke-width="1"/>
+
+  <!-- SIEM / Monitoring — side panel -->
+  <rect x="756" y="255" width="124" height="144" rx="8" fill="#e0f2f1" stroke="#00897b" stroke-width="1.5"/>
+  <text x="818" y="278" text-anchor="middle" font-size="11" font-weight="700" fill="#004d40">SIEM /</text>
+  <text x="818" y="293" text-anchor="middle" font-size="11" font-weight="700" fill="#004d40">Monitoring</text>
+  <line x1="818" y1="302" x2="818" y2="312" stroke="#80cbc4" stroke-width="1"/>
+  <text x="818" y="322" text-anchor="middle" font-size="9" fill="#00695c">Anomaly</text>
+  <text x="818" y="334" text-anchor="middle" font-size="9" fill="#00695c">Detection</text>
+  <text x="818" y="350" text-anchor="middle" font-size="9" fill="#00695c">Alerting</text>
+  <text x="818" y="366" text-anchor="middle" font-size="9" fill="#00695c">Incident</text>
+  <text x="818" y="378" text-anchor="middle" font-size="9" fill="#00695c">Response</text>
+
+  <!-- Arrow from IAM to SIEM -->
+  <line x1="610" y1="283" x2="756" y2="305" stroke="#80cbc4" stroke-width="1.5" stroke-dasharray="4,3"/>
+
+  <!-- Key assumption box -->
+  <rect x="60" y="580" width="780" height="28" rx="5" fill="#fff8e1" stroke="#ffc107" stroke-width="1"/>
+  <text x="450" y="597" text-anchor="middle" font-size="10" fill="#5d4037">KEY ASSUMPTION: Every actor is a human user, a service account, or a deterministic coded integration. Inputs to workflows are always data — not instructions.</text>
+
+  <!-- Arrow markers -->
+  <defs>
+    <marker id="arr" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#90caf9"/>
+    </marker>
+    <marker id="arr-dark" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#1565c0"/>
+    </marker>
+    <marker id="arr-m" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#5c6bc0"/>
+    </marker>
+    <marker id="arr-p" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#7e57c2"/>
+    </marker>
+  </defs>
+</svg>
